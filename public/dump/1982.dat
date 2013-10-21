@@ -1,0 +1,11 @@
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (1, NULL, NULL, '2012-09-20 09:49:11.044491', '2012-09-20 09:49:11.044491');
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (6, 2, 'топология', '2012-09-20 11:32:43.212136', '2012-09-20 11:32:43.212136');
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (7, 2, 'муфта', '2012-09-20 11:32:56.979234', '2012-09-20 11:32:56.979234');
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (8, 2, 'монтаж', '2012-09-20 11:33:13.472141', '2012-09-20 11:33:13.472141');
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (9, 3, 'порт1', '2012-09-20 11:35:19.365006', '2012-09-20 11:35:33.104721');
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (10, 3, 'порт2', '2012-09-20 11:35:46.503948', '2012-09-20 11:35:46.503948');
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (11, 3, 'порт3', '2012-09-20 11:35:58.233186', '2012-09-20 11:35:58.233186');
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (12, 3, 'порт4', '2012-09-20 11:36:10.731564', '2012-09-20 11:36:10.731564');
+INSERT INTO hardware_topologies (id, hardware_id, name, created_at, updated_at) VALUES (13, 3, 'порт5', '2012-09-20 11:36:25.25254', '2012-09-20 11:36:25.25254');
+
+

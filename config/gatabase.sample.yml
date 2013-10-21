@@ -1,0 +1,30 @@
+setup: &setup
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *setup
+  database: mts_service_development
+  username: postgres
+  password:
+  host: 127.0.0.1
+
+test:
+  <<: *setup
+  database: mts_service_test
+  username: postgres
+  password:
+  host: 127.0.0.1
+
+staging:
+  <<: *setup
+  database: mts_service_staging
+  username:
+  password:
+
+production:
+  <<: *setup
+  database: mts_service_production
+  username:
+  password:

@@ -1,0 +1,31 @@
+- content_for :title  do
+  = t('web.admin.tcabels.title')
+
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, t('web.admin.id')
+      %th= sort_link @search, :name, 'Имя'
+      %th= sort_link @search, :prefix, 'Инвентарный префикс'
+      %th= sort_link @search, :state, 'Состояние'
+      %th
+  %tbody
+    - if @tcabels.size > 0
+      - @tcabels.each do |tc|
+        %tr
+          %td= tc.id
+          %td= tc.name
+          %td= tc.prefix
+          %td= tc.state
+          %td
+            = link_to 'Открыть', url_for(:controller => 'tcabels', :action => current_menu[@mid][:open], :id => tc)
+    - else
+      %tr
+        %td{:colspan => 5, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+= render 'shared/paginator',
+  :paginator => @tcabels

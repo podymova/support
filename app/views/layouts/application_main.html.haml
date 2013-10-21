@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title
+      = t('base_title')
+    = stylesheet_link_tag "application_admin"
+    = javascript_include_tag "application"
+    -#= javascript_include_tag "/javascripts/ckeditor/ckeditor"
+    = csrf_meta_tags
+  %body
+
+    = render 'layouts/shared/header'
+
+    .cpage
+      .header
+        .header-taglines
+          %p.header-tagline
+          %p.header-tagline2
+      .content-wrapper
+        .sidebar
+          .sidebar-logo
+            = link_to '', root_path, :class => "brand"
+            %br
+            = link_to "На основной сайт", "http://www.mts.ru/"
+          = render 'layouts/shared/leftbox'
+        = render 'layouts/shared/top'
+        .content
+          -#= render 'layouts/shared/rightbox'
+          #yw0
+          .contract-list
+            -#.ajax-loading
+            .contract-item
+              - if content_for? :back
+                = yield :back
+                %br
+                %br
+              %hr.soften
+                - if content_for? :title
+                  %h4= yield :title
+                -#= flash_block
+                = render 'layouts/shared/flash', :flash => flash
+                = yield
+      = render 'layouts/shared/footer'

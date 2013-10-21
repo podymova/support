@@ -1,0 +1,336 @@
+﻿.breadcrumbs {
+    background-color: #D7D7D7;
+    padding: 0px 212px 6px 16px;
+    zoom: 1;
+    position:relative;
+    overflow:hidden;
+    color: #666465;
+    /*display: inline;*/
+    font: 11px/150% arial;
+}
+.breadcrumbs .divider {
+  padding: 0 5px;
+  color: #999999;
+}
+.breadcrumbs .active a {
+  background: none repeat scroll 0 0 transparent;
+  color: #333333;
+}
+
+
+h2.steps, h2.extra {
+    color: #333;
+    font: 18px Arial;
+    padding: 5px 0 22px;
+    text-transform: uppercase;
+    /*margin-bottom: 10px;*/
+    margin: 0;
+}
+h1.title {
+    color: #000000;
+    font: 26px Arial;
+    padding: 5px 0 22px;
+    text-transform: uppercase;
+}
+
+/*****************************************************************************************
+* Gridim
+*****************************************************************************************/
+.gridium {
+	margin-bottom: 5px;
+    color: #666666;
+    font: 12px/1.4 Arial;
+	border-spacing: 3px!important;
+	border-collapse: separate!important;
+}
+
+.gridium table {
+    border-collapse: separate;
+    border-spacing: 3;
+
+    table-layout:fixed;
+    width:100%;
+    word-wrap:break-word;
+
+}
+
+.gridium,
+.gridium td,
+.gridium th {
+    background-color: transparent;
+    border: 0 none;
+	border-spacing: 3px;
+	border-collapse: separate;
+
+}
+
+.gridium table tr td {
+	padding: 8px 3px;
+	border-bottom: 1px solid #D6D6D6;
+	}
+
+
+/*.gridium tbody tr:hover td,*/
+/*.gridium tbody tr:hover th {*/
+/*  background-color: #f5f5f5;*/
+/*}*/
+
+/*
+ Headers
+____________________________________________________________________________________________*/
+.gridium thead tr th {
+	font-weight: bold;
+	padding: 0 0 14px;
+	border: 0;
+	background: url(../img/table-header-2.gif) no-repeat scroll 0 100%;
+    vertical-align: middle;
+}
+
+.gridium thead tr th:first-child { background: url(../img/table-header-1.gif) no-repeat scroll 0 100%; }
+.gridium thead tr th:last-child { background: url(../img/table-header-3.gif) no-repeat scroll 0 100%; }
+
+	.gridium thead tr th span { padding: 0 2px; }
+
+	.gridium thead tr th.gm-head-sortable span.gm-head-text {
+		color: #0a83ab;
+		text-decoration: none;
+		border-bottom: 1px dashed #0A83AB;
+		cursor: pointer;
+	}
+
+
+/*
+ Filters
+____________________________________________________________________________________________*/
+.gridium thead tr.gm-filters {}
+
+.gm-substring-filter-wrapper { white-space: nowrap; }
+input.gm-substring-filter-manual { width: 6em; }
+input.gm-substring-filter-auto { width: 90%; }
+
+.gridium .gm-filtered td {
+	background-color: #FFFFE0;
+	}
+
+/*
+ Paging
+____________________________________________________________________________________________*/
+.gridium tfoot tr td {}
+	.gridium tfoot .gm-paging {}
+
+		.gridium tfoot .gm-paging .gm-pages { float: left; }
+			.gridium tfoot .gm-paging .gm-pages ul,
+			.gridium tfoot .gm-paging .gm-pages ul li {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				}
+			.gridium tfoot .gm-paging .gm-pages ul li {
+				display: inline;
+				margin: 0.3em;
+				background-image: none;
+				}
+			.gridium tfoot .gm-paging .gm-pages ul li.gm-current-page,
+			.gridium tfoot .gm-paging .gm-page-size ul li.gm-current-page-size {
+				background-color: #E8E8E8;
+				padding: 0 0.2em;
+				}
+			.gridium tfoot .gm-paging .gm-pages ul li.gm-current-page a,
+			.gridium tfoot .gm-paging .gm-page-size ul li.gm-current-page-size a {
+				font-weight: bold;
+				color: #666;
+				text-decoration: none;
+				cursor: default;
+				}
+
+		.gridium tfoot .gm-paging .gm-page-size {
+			padding: 0.4em 0 0 0.1em;
+			}
+
+			.gridium tfoot .gm-paging .gm-page-size span { float: left; }
+			.gridium tfoot .gm-paging .gm-page-size ul {
+				display: inline;
+				float: left;
+				padding: 0 0.2em;
+				}
+
+				.gridium tfoot .gm-paging .gm-page-size ul li {
+					display: inline;
+					padding: 0 0.4em;
+					background-image: none;
+					}
+
+/*
+ Groups
+____________________________________________________________________________________________*/
+.gridium tr.gm-row-group {}
+
+/*
+.gridium .gm-group-level-1 .first {}
+.gridium .gm-group-level-2 .first { padding-left: 1.5em; }
+.gridium .gm-group-level-3 .first { padding-left: 3em; }
+.gridium .gm-group-level-4 .first { padding-left: 4.5em; }
+*/
+.gridium .first {}
+.gridium .first { padding-left: 1.5em; }
+.gridium .gm-group-level-3 .first { padding-left: 3em; }
+.gridium .gm-group-level-4 .first { padding-left: 4.5em; }
+
+
+/*
+ Inputs
+ ___________________________________________________________________________________________*/
+ .gridium table tbody tr td.checkbox-column input {
+	margin-right: 0.4em;
+	vertical-align: middle;
+ }
+
+ .gridium table tbody tr td.radio input {
+	margin-right: 0.4em;
+	vertical-align: middle;
+ }
+
+ .gridium table tbody tr td span {
+	vertical-align: middle;
+ }
+
+ .gridium table tbody tr td.counter-value span {
+	vertical-align: bottom;
+ }
+
+ .gridium table tbody tr td.counter-value {
+	vertical-align: middle;
+ }
+
+
+/*
+ Expander
+ ___________________________________________________________________________________________*/
+ .gridium table tbody tr .gm-expander {
+	cursor: pointer;
+	display: none;
+ }
+
+ /*
+ Predefined row types
+ ___________________________________________________________________________________________*/
+
+.gridium table .balance,
+.gridium table .amount {
+	text-align: right;
+	padding-right: 0.3em;
+	}
+
+.gridium table .currency { width: 6.5em; text-align: right;}
+
+.gridium table .date { width: 11.5em; white-space: nowrap; }
+.gridium table .sim { width: 12em; }
+
+/*****************************************************************************************
+* Collapsable block
+*****************************************************************************************/
+.collapsable_block_show,
+.collapsable_block_hide {
+	display: none; /* this is done case, when user has disabled JavaScript */
+	margin-bottom: 0.1em;
+	}
+
+.collapsable_block_show a,
+.collapsable_block_hide a {
+	text-decoration: none;
+	border-bottom: 1px dashed #0A83AB;
+	}
+
+
+
+/*****************************************************************************************
+* Collapsible block
+*****************************************************************************************/
+div.collapsible-box div.hint {
+	float: left;
+	margin: 1em 1em 0 0;
+	width: 18%;
+	}
+
+div.collapsible-box div.comment {
+	float: left;
+	margin: 1em 0 0 1em;
+	font-size: 95%;
+	width: 80%;
+	}
+
+div.collapsible-box div.clear {
+	clear: left;
+	}
+
+/*****************************************************************************************
+* Tabs
+*****************************************************************************************/
+.yiiTab div.view {
+    border: none;
+    margin: 0;
+    padding: 8px;
+}
+
+.yiiTab ul.tabs {
+    background: url("../img/ctv-tabs-bg1.png") repeat-x scroll 0 100% transparent;
+    left: -27px;
+    margin: 0 -27px 0 0;
+    padding: 0 0 4px 13px;
+    position: relative;
+    border: none;
+}
+
+.tabs:after {
+    /*clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;*/
+}
+
+.yiiTab ul.tabs li {
+    min-height: 20px;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    *display: inline;
+    _height: 20px;
+}
+
+.yiiTab ul.tabs a, .yiiTab ul.tabs a.active {
+    background: none;
+    border: none;
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    padding: 0;
+    font-weight: normal;
+}
+
+.yiiTab ul.tabs a, .yiiTab ul.tabs a:link, .yiiTab ul.tabs a:hover {
+    text-decoration: underline;
+    color: #0A83AB !important;
+    font-weight: normal;
+}
+
+.yiiTab ul.tabs a span, .yiiTab ul.tabs a.active span {
+    display: block;
+    height: 34px;
+    padding: 0 11px;
+}
+
+.yiiTab ul.tabs a:hover {
+    background: none;
+}
+
+.yiiTab ul.tabs a.active {
+    color: #676466 !important;
+    text-decoration: none;
+    background: url("../img/ctv-tabs-bg2.png") no-repeat scroll 0 0 transparent;
+}
+
+.yiiTab ul.tabs a.active span {
+    background: url("../img/ctv-tabs-bg3.png") no-repeat scroll 100% 0 transparent;
+}

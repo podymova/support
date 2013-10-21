@@ -1,0 +1,17 @@
+= simple_form_for(:users, :url => '#', :html => {:id => 'form_selectUsers'}) do |f|
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th= check_box_tag 'check_all'
+        %th= 'Логин'
+        %th= 'Ф.И.О.'
+    %tbody
+      - if @users.size > 0
+        - @users.each do |i|
+          %tr
+            %td{:width => '5%'}= check_box_tag "item_#{i.id}", i.id
+            %td.search-cell{:width => '45%'}= i.login
+            %td.search-cell{:width => '50%'}= i.fullname
+      - else
+        %tr
+          %td{:colspan => 3, :style => 'text-align: center;'}= 'Ничего не найдено.'

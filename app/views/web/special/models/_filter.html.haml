@@ -1,0 +1,33 @@
+%p.slide
+  = link_to t('web.admin.new'), new_special_model_path, :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+
+  = simple_form_for(:search,
+                      :url => special_models_path,
+                      :method => :get,
+                      :html => {:id => 'pprf'})  do |f|
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        %td
+          .form-line
+            = f.input :created_at_less_than_or_equal_to, :required => false, :label => ::Special::Model.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker", :autocomplete => 'off'}
+        %td
+          .form-line
+            = f.input :name_like, :required => false, :label => ::Special::Model.human_attribute_name(:name)
+        %td
+          .form-line
+            = f.input :section_like, :required => false, :label => ::Special::Model.human_attribute_name(:section)
+        %td
+          .form-line
+            = f.input :state_equals, :collection => ::Special::Model.new.state_paths.to_states, :required => false, :label => ::Special::Model.human_attribute_name(:state)
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', special_models_path, :type => "reset"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'

@@ -1,0 +1,4 @@
+%ul
+  - if @streets && @streets.size > 0
+    - @streets.each do |s|
+      %li{:rel => 'addressLine', :data => {:item => s.id, :source => api_street_houses_path(s.id), :type => 'street'}}= s.name

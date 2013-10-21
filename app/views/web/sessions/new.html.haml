@@ -1,0 +1,11 @@
+- content_for :title  do
+  = t('web.sessions.new.authorization')
+
+= simple_form_for :session, :url => session_path do |f|
+  .form-line
+    = f.input :login, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :password, :required => false, :input_html => { :id => 'LoginForm_login'}
+
+  %div= f.button :submit, t('web.sessions.new.login'), :class => 'btn btn-small btn-danger'
+

@@ -1,0 +1,18 @@
+.content-aside-wrap
+  .content-aside
+    %p
+      %strong
+        = current_user.fullname
+    %p
+      Вы вошли как:
+      %br
+      %strong
+        = current_user.login
+    %ul.custom_list{:style => 'padding:0;'}
+      %li
+        Контактный телефон:
+        %br
+      %li
+        %strong
+          %span#editable-value-phone= current_user.phone
+          = link_to "", edit_user_path(current_user, :from_url => root_path, :message => t('web.admin.users.profile')), :class => 'popup-edit-form-link'

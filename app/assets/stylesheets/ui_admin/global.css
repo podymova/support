@@ -1,0 +1,22 @@
+body {
+  margin: 0px;
+  padding: 50px 0px 0px 0px;
+}
+
+.table_image {
+  width: 6em;
+}
+
+.sidebar .control-group label{
+    text-align: left;
+}
+.sidebar .controls{
+    margin-left: 0px;
+}
+
+.sidebar .form-horizontal .form-actions{
+    padding-left: 20px;
+}
+
+/*footer {border-top:1px solid #000; margin:17px auto 0; padding:18px 0 20px; overflow:hidden; width:940px;}
+footer .copyright {float:left}*/

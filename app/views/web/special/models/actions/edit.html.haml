@@ -1,0 +1,10 @@
+- content_for :back  do
+  = link_to 'Назад', params[:from_url], :type => "reset"
+
+- content_for :title  do
+  = @model_action.name
+
+= render 'form',
+  :value => @model_action,
+  :url => root_model_action_path(@model, :from_url => params[:from_url]),
+  :from_ur => params[:from_url]

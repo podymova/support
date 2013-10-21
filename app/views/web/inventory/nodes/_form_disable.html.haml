@@ -1,0 +1,37 @@
+%table.table.table-striped
+  %tr
+    %td
+      %strong= 'Адрес'
+    %td= value.street.name+'-'+value.house.number
+  %tr
+    %td
+      %strong= value.class.human_attribute_name(:entrance)
+    %td= value.entrance
+  %tr
+    %td
+      %strong= value.class.human_attribute_name(:inumber)
+    %td= value.inumber
+  %tr
+    %td
+      %strong= value.class.human_attribute_name(:service_state)
+    %td= value.service_state
+  %tr
+    %td
+      %strong= value.class.human_attribute_name(:quantity)
+    %td= value.quantity
+  %tr
+    %td
+      %strong= value.class.human_attribute_name(:item)
+    %td= value.item
+  %tr
+    %td
+      %strong= value.class.human_attribute_name(:mvlan)
+    %td= value.mvlan
+  %tr
+    %td
+      %strong= value.class.human_attribute_name(:cvlan)
+    %td= value.cvlan
+  %tr
+    %td
+      %strong= value.class.human_attribute_name(:state)
+    %td= value.state

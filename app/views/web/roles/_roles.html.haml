@@ -1,0 +1,35 @@
+-#- content_for :title  do
+  = t('web.admin.roles.title')
+
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Role.human_attribute_name(:id)
+      %th= sort_link @search, :name, ::Role.human_attribute_name(:name)
+      %th= sort_link @search, :state, ::Role.human_attribute_name(:state)
+      %th{:colspan => 2}
+  %tbody
+    - if array.size > 0
+      - array.each do |i|
+        %tr
+          %td= i.id
+          %td= i.name
+          %td= i.state
+          - path = ((roles_inaccessible.include?(i.name) == true) && (current_type == ::Admin)) ? role_path(i) : edit_role_path(i)
+          %td= link_to 'Открыть', path #edit_role_path(i, :disabled => disable)
+          %td
+            - if current_type == ::Root
+              = link_to t('web.admin.delete'), role_path(i, :from_url => request.fullpath),
+                :method => :delete,
+                :confirm => t('web.admin.are_you_sure'),
+                :class => 'link-to-delete'
+    - else
+      %tr
+        %td{:colspan => 5, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+= render 'shared/paginator',
+  :paginator => array

@@ -1,0 +1,136 @@
+ru:
+  flash:
+    controllers:
+      web:
+        admin:
+          pprs:
+            create:
+              success: 'Документ был успешно создан.'
+            update:
+              success: 'Документ был успешно обновлен.'
+              
+          companies_categories:
+            create:
+              success: 'Категория компании была успешно добавлена.'
+            update:
+              success: 'Категория компании была успешно обновлена.'
+          employees_departments:
+            create:
+              success: 'Департамент был успешно создан.'
+            update:
+              success: 'Данные департамента были успешно обновлены.'
+          employees_positions:
+            create:
+              success: 'Должность была успешно создана.'
+            update:
+              success: 'Данные должности были успешно обновлены.'
+          companies_statuses:
+            create:
+              success: 'Статус компании был успешно добавлен.'
+            update:
+              success: 'Статус компании был успешно обновлён.'
+          juridical_people:
+            create:
+              success: 'Юр.лицо было успешно создано.'
+            update:
+              success: 'Данные юр.лица были успешно обновлены.'
+        employee:
+          companies:
+            create:
+              success: 'Компания была успешно создана.'
+            update:
+              success: 'Данные компании были успешно обновлены.'
+            show:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+            edit:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+            destroy:
+              error: 'Вы не можете удалить компанию. Не достаточно полномочий.'
+            notes:
+              create:
+                success: 'Заметка успешно добавлена.'
+                error: 'Ошибка при добавлении заметки.'
+            deals:
+              show:
+                error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+            invoices:
+              show:
+                error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+            people:
+              show:
+                error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+          companies_crm_accounts:
+            create:
+              success: 'CRM-Аккаунт компании был успешно создан.'
+            update:
+              success: 'Данные CRM-аккаунта компании были успешно обновлены.'
+            edit:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+          companies_gis_accounts:
+            create:
+              success: 'GIS-Аккаунт компании был успешно создан.'
+            update:
+              success: 'Данные GIS-аккаунта компании были успешно обновлены.'
+            edit:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+          companies_deals:
+            create:
+              success: 'Договор был успешно создан.'
+            update:
+              success: 'Данные договора были успешно обновлены.'
+            edit:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+          companies_invoices:
+            notes:
+              create:
+                success: 'Заметка успешно добавлена.'
+                error: 'Ошибка при добавлении заметки.'
+            create:
+              success: 'Счет был успешно создан.'
+            update:
+              success: 'Данные счета были успешно обновлены.'
+            edit:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+          companies_people:
+            notes:
+              create:
+                success: 'Заметка успешно добавлена.'
+                error: 'Ошибка при добавлении заметки.'
+            create:
+              success: 'Человек был успешно создан.'
+            update:
+              success: 'Данные человека были успешно обновлены.'
+            edit:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+          events:
+            create:
+              success: 'Событие было успешно создано.'
+            update:
+              success: 'Событие было успешно обновлено.'
+            show:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+            edit:
+              error: "<strong>Не достаточно прав!</strong> Компания находится на ведении у %{assigned}"
+          tariffs:
+            create:
+              success: 'Тариф был успешно создан.'
+            update:
+              success: 'Данные тарифа были успешно обновлены.'
+          product_items:
+            index:
+              error: 'Не достаточно прав на управление товарными позициями.'
+            new:
+              error: 'Не достаточно прав на управление товарными позициями.'
+            edit:
+              error: 'Не достаточно прав на управление товарными позициями.'
+            create:
+              success: 'Товарная позиция была успешно создана.'
+            update:
+              success: 'Товарная позиция была успешно обновлена.'
+        company:
+          crm_accounts:
+            update:
+              success: 'CRM-Аккаунт был успешно обновлён.'
+          gis_accounts:
+            update:
+              success: 'GIS-Аккаунт был успешно обновлён.'

@@ -1,0 +1,14 @@
+- content_for :back  do
+  = link_to 'Назад', from_url, :type => "reset"
+
+= render 'shared/admin/error_messages', :errors => user.errors
+
+= simple_form_for(user, :url => url) do |f|
+
+  .form-line
+    = f.input :password, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :password_confirmation,  :required => false, :input_html => { :id => 'LoginForm_login'}
+
+  %br
+  = f.submit 'Сохранить', :class => 'btn btn-small btn-danger'

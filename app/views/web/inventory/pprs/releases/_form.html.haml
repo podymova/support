@@ -1,0 +1,82 @@
+
+#ppr
+  %strong= 'Адрес:'
+  -#= parent.street.name
+  = "#{parent.street.name} - #{parent.house.number}"
+  %br
+  %strong= 'Подъезд:'
+  = parent.entrance
+
+  %br
+    %br
+
+  -#= render 'web/inventory/pprs/releases/users/users',
+    :array => value,
+    :from_url => from_url
+
+
+  = simple_form_for(value, :url => url, :html => {:class => 'send-data', :style => "width:50%;"}  ) do |f|
+    = f.input :user_id, :as => :hidden
+
+    .form-line
+      = f.input :created_at, :as => :datepicker, :required => false
+    .form-line
+      = f.input :date2ispoln, :as => :datepicker, :required => false
+    .form-line
+      = f.input :date2end, :as => :datepicker, :required => false
+    .form-line
+      = f.input :manager, :collection => ::Role::User.active, :include_blank => true, :input_html => {:style => 'width:230px;'}
+    .form-line
+      = f.input :tasks_list, :as => :text, :input_html => {:style => 'width:423px; height:190px;'}
+
+
+    #ppr-hards
+      = render 'web/inventory/pprs/releases/hards', :array => value.hards, :value => f
+
+
+    #ppr-resume
+      %h4= t('web.admin.pprs.resume')
+      .form-line
+        = f.input :resume, :as => :ckeditor, :label => '&nbsp;', :input_html => {:style => 'width:500px;'}
+
+
+      %br
+      %br
+      = f.submit  t('web.admin.save'), :class => 'btn btn-large btn-danger', :style => 'margin-left:43%', :id => 'floatButton'
+
+
+#ppr-extends
+
+  %h5= 'Документы'
+  #ppr-docs.ppr-extra
+    = render 'web/inventory/pprs/releases/docs/docs',
+      :array => value,
+      :from_url => request.fullpath,
+      :url => ppr_release_get_doc1_path(parent, value, :from_url => request.fullpath)
+
+
+  %h5= 'Исполнители'
+  #ppr-users.ppr-extra
+    = render 'web/inventory/pprs/releases/users/users',
+      :array => value,
+      :from_url => request.fullpath,
+      :url => ppr_release_users_path(parent, value, :from_url => request.fullpath)
+
+
+  %h5= 'Файлы'
+  #ppr-attaches.ppr-extra
+    = render 'web/inventory/pprs/releases/attaches/attaches',
+      :ppr => parent,
+      :array => value,
+      :from_url => request.fullpath,
+      :url => ppr_release_attaches_path(parent, value, :from_url => request.fullpath)
+
+
+  %h5= 'Комментарии'
+  #ppr-comments.ppr-extra
+    = render 'web/inventory/pprs/releases/comments/comments',
+      :ppr => parent,
+      :array => value,
+      :from_url => request.fullpath,
+      :url => ppr_release_comments_path(parent, value, :from_url => request.fullpath)
+

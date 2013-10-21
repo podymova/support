@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title
+      = t('base_title')
+    = stylesheet_link_tag "application_admin"
+    = javascript_include_tag "application_admin"
+    = csrf_meta_tags
+  %body.guest
+    .cpage
+      .header
+        .header-taglines
+          %p.header-tagline
+          %p.header-tagline2
+      .sidebar
+        .sidebar-logo
+          = link_to '', root_path, :class => "brand"
+          %br
+          = link_to "На основной сайт", "http://www.mts.ru/"
+
+      .content
+        - if content_for? :title
+          %h1= yield :title
+          #yw0
+        = flash_block
+        = yield
+
+      = render 'layouts/shared/footer'

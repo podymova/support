@@ -1,0 +1,12 @@
+= render 'form',
+  :hardware => @hardware,
+  :url => hardware_path(@hardware),
+  :hardware_message => t('web.admin.save'),
+  :from_url => edit_hardware_path(@hardware)
+
+%br
+%br
+%br
+= render 'topology',
+  :value => @hardware,
+  :from_url => edit_hardware_path(@hardware)

@@ -1,0 +1,15 @@
+-#- unless array.users.size == 0
+  .list-comment
+    - array.users.each do |pc|
+      = render 'web/inventory/pprs/releases/users/item',
+        :parent => array,
+        :value => pc,
+        :from_url => from_url
+
+.new-doc
+  = simple_form_for(:doc, :url => url) do |f|
+
+    .form-line
+      = f.input :name, :collection => [['Отчет о техническом обслуживании','doc1']], :label => 'Документ', :required => false, :input_html => {:style => 'width:300px;'} #, :include_blank => false
+    .form-line
+      = f.submit 'Сформировать', :class => 'btn btn-small btn-success'

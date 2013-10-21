@@ -1,0 +1,46 @@
+-#- content_for :title  do
+  = t('web.admin.roles.title')
+
+
+= render 'filter'
+
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Role::User.human_attribute_name(:id)
+      %th= sort_link @search, :login, ::Role::User.human_attribute_name(:login)
+      %th= sort_link @search, :fullname, ::Role::User.human_attribute_name(:fullname)
+      %th= sort_link @search, :email, ::Role::User.human_attribute_name(:email)
+      %th= sort_link @search, :state, ::Role::User.human_attribute_name(:state)
+      %th{:colspan => 2}
+  %tbody
+    - if array.size > 0
+      - array.each do |i|
+        %tr
+          %td{:style => 'width:50px;'}= i.id
+          %td= i.login
+          %td= i.fullname
+          %td= i.email
+          %td= i.state
+          %td
+            = link_to t('web.admin.edit'), edit_user_path(i, :from_url => roles_path) #:onclick => "editUser(#{i.id});"
+          %td
+            = link_to t('web.admin.delete'), user_path(i, :from_url => roles_path),
+              :method => :delete,
+              :data => {:confirm => t('web.admin.are_you_sure')},
+              :class => 'link-to-delete'
+    - else
+      %tr
+        %td{:colspan => 5, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+
+= render 'shared/paginator',
+  :paginator => array
+
+-#= render 'shared/paginator.html.haml',
+  :paginator => @users,
+  :remote => true,
+  :url => api_users_path

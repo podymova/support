@@ -1,0 +1,56 @@
+%h4= 'Кабели'
+
+-# Filter section
+%p.slide
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+
+  = simple_form_for(:search,
+                      :url => search_api_tcabels_path,
+                      :method => :post,
+                      :remote => true,
+                      :html => {:rel => "AjaxSearchForm",
+                                :onsubmit => "submitAjaxFilter('send')"})  do |f|
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        -#%td
+          = f.input :tcabel_id_equals, :as => :hidden, :input_html => {:value => value.id}
+        %td
+          .form-line
+            = f.input :created_at_less_than_or_equal_to, :required => false, :label => ::Inventory::Tcabel::Cabel.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker", :autocomplete => 'off'}
+        %td
+          .form-line
+            = f.input :inumber_like, :required => false, :label => ::Inventory::Tcabel::Cabel.human_attribute_name(:inumber)
+        %td
+          .form-line
+            = f.input :state_equals, :collection => ::Inventory::Tcabel::Cabel.new.state_paths.to_states, :required => false, :label => ::Inventory::Tcabel::Cabel.human_attribute_name(:state)
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', search_api_tcabels_path, :method => :post, :remote => true, :type => "reset", :onclick => "AjaxFilter('reset');"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'
+-# Filter section
+
+#AjaxFilterResult{:data => {:source => search_api_tcabels_path, :parent => value.id}}
+
+= paginate @cabels, :remote => true, :params => {:controller => 'api/inventory/tcabels',
+                                                 :action => 'search',
+                                                 :onclick => "AjaxFilter('send');"}
+
+
+-# New item
+%br
+= simple_form_for(value.cabels.build, :url => tcabel_cabels_path(value, :from_url => from_url), :html => {:class => "form-horizontal" }) do |f|
+  .form-line
+    = f.input :inumber, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :length, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :comment, :as => :ckeditor, :input_html => { :id => 'LoginForm_login'}
+  %br
+  = f.submit t('web.admin.save'), :class => 'btn btn-small btn-danger'

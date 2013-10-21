@@ -1,0 +1,24 @@
+-#%h4= 'Оборудование'
+.tabbable.tabs-left{:style => ' width:100%;'}
+  %ul.nav.nav-tabs
+    - array.each_with_index do |ph, i|
+      %li= link_to(ph.hardware.name, "#h#{ph.id}", :data => {:toggle => :tab })
+  .tab-content
+    - array.each_with_index do |ph, i|
+      -#- i == 0 ? @adding = "active" : @adding = ""
+      %div{:id => "h#{ph.id}", :class => "tab-pane"}
+        = value.fields_for :hards, ph do |h|
+          = h.input :hardware_id, :as => :hidden
+          -#%h4= ph.hardware.name
+          - ph.tops.each do |pht|
+            = h.fields_for :tops, pht do |t|
+              = t.input :topology_id, :as => :hidden
+              .form-line
+                = t.input :value, :label => pht.topology.name, :required => false, :input_html => { :id => 'LoginForm_login'}
+    %br
+
+
+:javascript
+  $('.nav.nav-tabs > li:first').addClass('active')
+  $('.tab-pane:first').addClass('active')
+

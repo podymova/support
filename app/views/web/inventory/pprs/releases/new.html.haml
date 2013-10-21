@@ -1,0 +1,6 @@
+
+= render 'form',
+  :parent => @ppr,
+  :value => @release,
+  :url => ppr_releases_path(@ppr, :from_url => params[:from_url]),
+  :from_ur => params[:from_url]

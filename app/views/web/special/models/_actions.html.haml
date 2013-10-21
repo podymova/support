@@ -1,0 +1,35 @@
+%h4= 'Actions'
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= ::Special::Model::Action.human_attribute_name(:id)
+      %th= ::Special::Model::Action.human_attribute_name(:name)
+      %th= ::Special::Model::Action.human_attribute_name(:full)
+      %th= ::Special::Model::Action.human_attribute_name(:order)
+      %th= ::Special::Model::Action.human_attribute_name(:state)
+      %th{:colspan => 2}
+  %tbody
+    - value.actions.each do |i|
+      %tr
+        %td= i.id
+        %td= i.name
+        %td= i.full
+        %td= i.order
+        %td= i.state
+        %td= link_to t('web.admin.edit'),  edit_special_model_action_path(value, i, :from_url => from_url)
+        %td= link_to t('web.admin.delete'),
+          special_model_action_path(value, i, :from_url => from_url),
+          :method => :delete,
+          :confirm => t('web.admin.are_you_sure'),
+          :class => 'link-to-delete'
+
+%br
+= simple_form_for(value.actions.build, :url => special_model_actions_path(value, :from_url => from_url), :html => {:class => "form-horizontal" }) do |f|
+  .form-line
+    = f.input :name, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :full, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :order, :required => false, :input_html => {:value => value.actions.maximum('order').to_i+1, :id => 'LoginForm_login'}
+  %br
+  = f.submit t('web.admin.save'), :class => 'btn btn-small btn-danger'

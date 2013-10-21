@@ -1,0 +1,11 @@
+- content_for :back  do
+  = link_to 'Назад', params[:from_url], :type => "reset"
+
+- content_for :title  do
+  = @street.name+', '+@street_house.number
+
+= render 'form',
+  :value => @street_house,
+  :url => admin_street_house_path(@street, :from_url => params[:from_url]),
+  :message => t('web.admin.save'),
+  :from_ur => params[:from_url]

@@ -1,0 +1,35 @@
+%br
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= t('web.admin.id')
+      %th= 'Номер'
+      %th= 'Число подъездов'
+      %th= 'Число этажей'
+      %th= 'Состояние'
+      %th
+  %tbody
+  - value.houses.each do |h|
+    %tr
+      %td= h.id
+      %td= h.number
+      %td= h.entrances
+      %td= h.floors
+      %td= h.state
+      %td= link_to t('web.admin.edit'),  edit_admin_street_house_path(value, h, :from_url => from_url)
+  %br
+  %br
+  %br
+
+= simple_form_for(value.houses.build(:st_short => value.short), :url => admin_street_houses_path(value, :from_url => from_url), :html => {:class => "form-horizontal" }) do |f|
+  .form-line
+    = f.input :st_short, :as => :hidden
+    = f.input :number, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :entrances, :input_html => { :id => 'LoginForm_login', :min => 1}
+  .form-line
+    = f.input :floors, :input_html => { :id => 'LoginForm_login', :min => 1}
+  .form-line
+    = f.input :state, :as => :state_select_via_transition, :input_html => { :id => 'LoginForm_login'}
+  %br
+  = f.submit message

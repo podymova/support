@@ -1,0 +1,14 @@
+- unless array.users.size == 0
+  .list-comment
+    - array.users.each do |pc|
+      = render 'web/inventory/pprs/releases/users/item',
+        :parent => array,
+        :value => pc,
+        :from_url => from_url
+
+.new-user
+  = simple_form_for(array.users.build, :url => url) do |f|
+    .form-line
+      = f.association :user, :label => 'Пользователь', :required => false
+    .form-line
+      = f.submit 'Добавить исполнителя', :class => 'btn btn-small btn-success'

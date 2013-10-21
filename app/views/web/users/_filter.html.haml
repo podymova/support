@@ -1,0 +1,46 @@
+%p.slide
+  = link_to t('web.admin.new'), new_user_path, :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+
+  = simple_form_for(:search,
+                      :url => users_path,
+                      :method => :get,
+                      :html => {:id => 'ulist'})  do |f|
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        %td
+          .form-line
+            = f.input :created_at_less_than_or_equal_to, :required => false, :label => ::Role::User.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker", :autocomplete => 'off'}
+        %td
+          .form-line
+            = f.input :login_like, :required => false, :label => ::Role::User.human_attribute_name(:login)
+        %td
+          .form-line
+            = f.input :email_like, :required => false, :label => ::Role::User.human_attribute_name(:email)
+      %tr
+        %td
+          .form-line
+            = f.input :phone_like, :required => false, :label => ::Role::User.human_attribute_name(:phone)
+        %td
+          .form-line
+            = f.input :fullname_like, :required => false, :label => ::Role::User.human_attribute_name(:fullname)
+        %td
+          .form-line
+            = f.input :state_equals, :collection => ::Role::User.new.state_paths.to_states, :required => false, :label => ::Role::User.human_attribute_name(:state)
+      -#- if current_type == ::Root
+        %tr
+          %td
+            .form-line
+              = f.input :type_equals, :collection => ['Root','Admin','Client'], :required => false, :label => ::Role::User.human_attribute_name(:type)
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', users_path, :type => "reset"
+        %td
+          -#= link_to '', '#', :class => 'search-button link', :id => 'send2user'
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'

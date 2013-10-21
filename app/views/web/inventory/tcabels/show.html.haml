@@ -1,0 +1,14 @@
+= render 'form',
+  :value => @tcabel,
+  :url => tcabel_path(@tcabel),
+  :from_url => edit_tcabel_path(@tcabel),
+  :disabled => 1
+
+%br
+%br
+%br
+
+= render 'cabels',
+  :value => @tcabel,
+  :from_url => edit_tcabel_path(@tcabel),
+  :cabels => @cabels

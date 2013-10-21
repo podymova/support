@@ -1,0 +1,6 @@
+- content_for :back  do
+  = link_to 'Назад', tdevs_path(:mid => @mid), :type => "reset"
+
+= render 'form',
+  :value => @tdev,
+  :url => tdevs_path(@tdev, :mid => @mid)

@@ -1,0 +1,79 @@
+- close = (defined? close_button) ? close_button : false
+- ok = (defined? ok_button) ? ok_button : false
+- save = (defined? save_button) ? save_button : false
+- search = (defined? search_input) ? search_input : false
+- mstyle = (defined? modal_style) ? modal_style : ""
+- mtitle =  (defined? modal_title) ? modal_title : "Header"
+- mtext =  (defined? modal_text) ? modal_text : "Сюда нужно ввести текст окна"
+- ltitle = (defined? link_title) ? link_title : "&nbsp;"
+- lclass =  (defined? link_class) ? link_class : 'btn btn-primary'
+- link = (defined? link_button) ? link_button : false
+- click = (defined? save_click) ? save_click : ''
+- bstyle = (defined? body_style) ? body_style: 'height:400px;'
+
+- if (link == true)
+  = link_to ltitle, "##{modal_id}",
+    :class => lclass,
+    :data => {:toggle => "modal"},
+    :style => 'border:0;'
+
+%div{:id => modal_id,
+     :class => 'modal hide fade',
+     "aria-hidden" => :true,
+     "aria-labelledby" => "ModalLabel",
+     :role => "dialog",
+     :tabindex => "-1",
+     :style => mstyle,
+     :rel => 'modalWindow'}
+
+  .modal-header{:style => 'text-align:center;min-height:20px;'}
+    = link_to '×', '#',
+      :class => 'close',
+      "aria-hidden" => "true",
+      :data => {:dismiss => "modal"},
+      :style => 'text-decoration:none;'
+    %h3#ModalLabel= mtitle
+
+  .modal-body{:style => bstyle}
+    = mtext
+
+  .modal-footer{:style => 'text-align:left;'}
+    .left-block
+      -# Close button
+      - if (close == true)
+        = link_to 'Close', '#', :class => 'btn', :data => {:dismiss => "modal"}
+
+      -# Ok button
+      - if (ok == true)
+        = link_to 'Ok', '#', :class => 'btn', :data => {:dismiss => "modal"}
+
+      -# Save button
+      - if (save == true)
+        = link_to save_title, save_url, :method => :post, :class => 'btn btn-small btn-danger', :onclick => click
+
+    .right-block
+      - if (search == true)
+        = simple_form_for(:search1,
+                          :url => search_url,
+                          :method => :post,
+                          :remote => true,
+                          :html => {:onsubmit => "return false;"}) do |f|
+          = f.input :text, :label => '&nbsp;', :required => false,
+            :input_html => {:autocomplete => 'off',
+              :rel => 'ajaxSearch',
+              :style => 'display:block;'}
+
+
+
+
+:javascript
+  $('div[rel*=modalWindow]')
+    .on('shown', function(){
+      $(this).find('input[rel*=ajaxSearch]').focus();
+    })
+    .on('hidden', function(){
+      var obj = $(this).find('input[rel*=ajaxSearch]')
+      obj.val('')
+      obj.closest('form').submit();
+    })
+

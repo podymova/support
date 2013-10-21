@@ -1,0 +1,45 @@
+- model =  get_model_name @search.class.name
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sortLink :id, search_api_node_devs_path(@node.id, :search => {:meta_sort => 'id.asc'}), model.human_attribute_name(:id)
+      %th= sortLink :producer, search_api_node_devs_path(@node.id, :search => {:meta_sort => 'producer.asc'}), model.human_attribute_name(:producer)
+      %th= sortLink :model, search_api_node_devs_path(@node.id, :search => {:meta_sort => 'model.asc'}), model.human_attribute_name(:model)
+      %th= sortLink :power, search_api_node_devs_path(@node.id, :search => {:meta_sort => 'power.asc'}), model.human_attribute_name(:power)
+      %th= sortLink :inumber, search_api_node_devs_path(@node.id, :search => {:meta_sort => 'inumber.asc'}), model.human_attribute_name(:inumber)
+      %th= sortLink :snumber, search_api_node_devs_path(@node.id, :search => {:meta_sort => 'snumber.asc'}), model.human_attribute_name(:snumber)
+      %th= sortLink :state, search_api_node_devs_path(@node.id, :search => {:meta_sort => 'state.asc'}), model.human_attribute_name(:state)
+      %th
+  %tbody
+    - @devs.each do |i|
+      %tr
+        %td= i.id
+        %td= i.producer
+        %td= i.model
+        %td= i.power
+        %td= i.inumber
+        %td= i.snumber
+        %td= i.state
+        %td
+          = link_to 'Открыть',  url_for(:controller => '/web/inventory/nodes', :action => current_menu[@mid][:open], :id => i, :from_url => request.fullpath)
+          -#= link_to t('web.admin.edit'),  edit_node_dev_path(value, i, :from_url => from_url)
+
+= paginate @devs, :remote => true
+
+:javascript
+  $('[class*=pagination] > ul > li > a').bind('click', function(){
+      var url = $(this).attr('href')
+      AjaxFilter('send', url);
+      return false;
+  });
+  $('a[rel*=sortLink]').bind('click', function(){
+      var url = $(this).attr('href')
+      url += '&linkId=' + $(this).attr('id')
+      AjaxFilter('send', url);
+      return false;
+  })
+
+-#= render 'shared/json/paginator',
+  :array => @devs,
+  :remote => true

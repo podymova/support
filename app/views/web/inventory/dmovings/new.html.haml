@@ -1,0 +1,5 @@
+= render 'form',
+  :value => @dmoving,
+  :url => dmovings_path(@dmoving),
+  :message => t('web.admin.save'),
+  :from_url => new_dmoving_path

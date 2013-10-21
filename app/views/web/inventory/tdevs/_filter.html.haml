@@ -1,0 +1,40 @@
+%p.slide
+  - if current_menu[@mid][:new]
+    = link_to t('web.admin.new'), new_tdev_path(:mid => @mid), :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+
+  = simple_form_for(:search,
+                      :url => tdevs_path,
+                      :method => :get,
+                      :html => {:id => 'pprf'})  do |f|
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        %td
+          .form-line
+            = f.input :created_at_less_than_or_equal_to, :required => false, :label => ::Inventory::Tdev.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker", :autocomplete => 'off'}
+        -#%td
+          .form-line
+            = f.input :producer_like, :required => false, :label => ::Inventory::Tdev.human_attribute_name(:producer)
+        %td
+          .form-line
+            = f.input :model_like, :required => false, :label => ::Inventory::Tdev.human_attribute_name(:model)
+        -#%td
+          .form-line
+            = f.input :prefix_like, :required => false, :label => ::Inventory::Tdev.human_attribute_name(:prefix)
+        -#%td
+          .form-line
+            = f.input :power_equals, :required => false, :label => ::Inventory::Tdev.human_attribute_name(:power)
+        %td
+          .form-line
+            = f.input :state_equals, :collection => ::Inventory::Tdev.new.state_paths.to_states, :required => false, :label => ::Inventory::Tdev.human_attribute_name(:state)
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', tdevs_path, :type => "reset"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'

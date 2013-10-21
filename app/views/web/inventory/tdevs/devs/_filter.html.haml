@@ -1,0 +1,32 @@
+%tr
+  %td
+    .form-line
+      = f.input :created_at_less_than_or_equal_to, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker", :autocomplete => 'off'}
+  %td
+    .form-line
+      = f.input :producer_like, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:producer)
+  %td
+    .form-line
+      = f.input :model_like, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:model)
+%tr
+  %td
+    .form-line
+      = f.input :power_like, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:power)
+  %td
+    .form-line
+      = f.input :state_equals, :collection => ::Inventory::Tdev::Dev.new.state_paths.to_states, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:state)
+  %td
+    .form-line
+      = f.input :inumber_like, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:inumber)
+%tr
+  %td
+    .form-line
+      = f.input :snumber_like, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:snumber)
+  %td
+    .form-line
+      = f.input :ip_like, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:ip)
+  %td
+    .form-line
+      = f.input :mac_like, :required => false, :label => ::Inventory::Tdev::Dev.human_attribute_name(:mac)
+
+

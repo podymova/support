@@ -1,0 +1,21 @@
+= link_to '', '#devs', :class => 'modal_close', :title => 'Закрыть'
+
+%br
+= simple_form_for :devs, :url => node_devs_path(array), :html => {:id => 'float_form'} do |f|
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th= check_box_tag 'check_all'
+        %th= 'Инвентарный номер'
+        %th= 'Серийный номер'
+        %th= 'IP'
+        %th= 'MAC'
+    %tbody
+      - ::Inventory::Tdev::Dev.active.each do |i|
+        %tr
+          %td{:width => 20}= check_box_tag "item_#{i.id}", i.id
+          %td= i.inumber
+          %td= i.snumber
+          %td= i.ip
+          %td= i.mac
+  = f.submit 'Добавить', :class => 'btn btn-small btn-danger', :style => 'margin-left:45%;'

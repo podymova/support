@@ -1,0 +1,45 @@
+- content_for :back  do
+  = link_to 'Назад', roles_path, :type => "reset"
+
+%ul.nav.nav-pills#users2rightsTabs{:style => 'width:100%;padding-left:0;margin-bottom:-60px;'}
+  %li.active{:style => 'width:50%;'}= link_to 'Основная информация', "#role-main", :data => {:toggle => "tab"}
+  %li{:style => 'width:50%;'}= link_to 'Пользователи', "#role-users", :data => {:toggle => "tab"}
+.tab-content
+
+  -# Панель основной информации и определения прав, одной формой
+  .tab-pane#role-main.active
+    - disable = (defined? disabled) ? disabled : false
+
+    -#- content_for :title  do
+      = value.name
+    = simple_form_for(value, :url => url, :html => {:id => "editRole"}) do |f|
+      .form-line
+        = f.input :name, :required => false, :input_html => { :id => 'LoginForm_login'}
+      .form-line
+        = f.input :order, :input_html => { :id => 'LoginForm_login', :min => 0 }
+      .form-line
+        = f.input :state, :as => :state_select_via_transition, :input_html => { :id => 'LoginForm_login'}
+      .form-line
+        - if current_type == ::Root
+          = f.input :type, :collection => types, :include_blank => false, :required => false, :input_html => { :id => 'LoginForm_login'}
+        - else
+          = f.input :type, :as => :hidden
+      %br
+      = render 'form_rights',
+        :array => @role,
+        :value => f
+      %br
+      = f.submit t('web.admin.save'), :class => 'btn btn-small btn-danger'
+
+    :javascript
+      var d = "#{disable}"
+      if (d == 'true') $('#editRole').find('input, select').attr('disabled', "#{disable}")
+      else $('#editRole').find('input, select').removeAttr('disabled')
+
+  -# Панель выбора пользователей
+  .tab-pane#role-users
+    = render 'form_users',
+      :users => @role_users,
+      :array => @role,
+      :from_url => from_url,
+      :value => value

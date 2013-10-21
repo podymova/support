@@ -1,0 +1,3 @@
+.nested-fields
+  = link_to '×', ppr_release_user_path(parent.ppr_id, parent.id, value, :from_url => from_url), :method => :delete, :class => 'close', :title => 'Удалить'
+  = value.user.fullname

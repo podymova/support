@@ -1,0 +1,40 @@
+#ppr
+
+  -#- if ppr.id
+    = render 'web/inventory/pprs/users/users',
+      :array => ppr,
+      :from_url => from_url
+
+
+  = simple_form_for(ppr, :url => url, :html => {:class => 'send-data', :style => "display:#{display}; margin-bottom: 900px;"}  ) do |f|
+    = f.input :user_id, :as => :hidden
+    = f.input :street_id, :as => :hidden, :input_html => { :id => 'street'}
+    = f.input :house_id, :as => :hidden, :input_html => { :id => 'house'}
+    .form-line
+      = f.input :entrance, :required => false, :input_html => { :id => 'LoginForm_login', :min => 1}
+    -#.form-line
+      = f.input :floor, :input_html => { :id => 'LoginForm_login', :min => 1}
+
+
+    %br
+    = f.submit  t('web.admin.save'), :class => 'btn btn btn-danger', :id => 'floatButton'
+
+    %br
+      %br
+
+    = render 'releases',
+      :array => ppr,
+      :from_url => from_url
+
+-##ppr-extends
+  #ppr-comments
+    = render 'web/inventory/pprs/comments/comments',
+      :array => ppr,
+      :from_url => edit_ppr_path(ppr),
+      :url => ppr_comments_path(ppr, :from_url => edit_ppr_path(ppr))
+
+  #ppr-attaches
+    = render 'web/inventory/pprs/attaches/attaches',
+      :array => ppr,
+      :from_url => edit_ppr_path(ppr),
+      :url => ppr_attaches_path(ppr, :from_url => edit_ppr_path(ppr))

@@ -1,0 +1,17 @@
+- content_for :back  do
+  = link_to 'Назад', nodes_path, :type => "reset"
+
+
+
+%ul.nav.nav-pills#users2rightsTabs
+  %li.active{:style => 'width:50%;'}= link_to 'Основная информация', "#node-main", :data => {:toggle => "tab"}
+  %li{:style => 'width:50%;'}= link_to 'Оборудование', "#node-devs", :data => {:toggle => "tab"}
+.tab-content
+  .tab-pane#node-main.active
+    = render 'form_disable',
+      :value => @node
+  .tab-pane#node-devs
+    = render 'devs',
+      :value => @node
+
+

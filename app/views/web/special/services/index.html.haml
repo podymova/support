@@ -1,0 +1,48 @@
+- content_for :title  do
+  = 'Service'
+
+%br
+  %br
+
+
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= 'Вид справочника'
+      %th= 'Статус'
+      %th{:colspan => 2}= 'Действие'
+      %th= ''
+  %tbody
+    %tr
+      %td= 'Адреса'
+      %td= ''
+      %td= link_to 'Обновить', '#',
+        :data => {:source => api_address_path(1), :method => 'PUT'},
+        :remote => true,
+        :rel => 'service',
+        :class =>  'btn btn-primary btn-small btn-success'
+      %td= link_to 'Очистить', '#',
+        :data => {:source => api_addresses_path, :method => 'GET'},
+        :remote => true,
+        :rel => 'service',
+        :class =>  'btn btn-primary btn-small btn-danger'
+      %td.info{:style => 'width:200px;'}
+
+    %tr
+      %td= 'Пользователи'
+      %td= ''
+      %td= link_to 'Обновить', '#', :class =>  'btn btn-primary btn-small btn-success'
+      %td= link_to 'Очистить', '#', :class =>  'btn btn-primary btn-small btn-danger'
+      %td= ''
+    %tr
+      %td= 'Договора'
+      %td= ''
+      %td= link_to 'Обновить', '#', :class =>  'btn btn-primary btn-small btn-success'
+      %td= link_to 'Очистить', '#', :class =>  'btn btn-primary btn-small btn-danger'
+      %td= ''
+
+:javascript
+  $('a[rel*=service]').bind('click',function(){
+    $(this).closest('tr').find('td.info').ajaxSendData($(this))
+  })

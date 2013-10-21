@@ -1,0 +1,9 @@
+- flash.each do |k, v|
+  %div{:class => "alert alert-#{k}"}
+    = link_to '×', '#', :class => 'close', :title => 'Закрыть', :data => {:dismiss => 'alert'}
+    - if v.split('^')
+      - v.split('^').each do |i|
+        = i
+        %br
+    - else
+      = v

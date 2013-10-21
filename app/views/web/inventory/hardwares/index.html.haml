@@ -1,0 +1,21 @@
+- content_for :title  do
+  = @title
+
+= link_to t('web.admin.new'), new_hardware_path, :class => 'btn btn-primary'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= t('web.admin.id')
+      %th= t('web.admin.hardwares.title1')
+  %tbody
+    - @hardwares.each do |e|
+      %tr
+        %td= e.id
+        %td= e.name    #, admin_hardware_topologies_path(e)
+        %td
+          = link_to t('web.admin.edit'),  edit_hardware_path(e)
+
+-#= render 'shared/admin/paginator',   :paginator => @hardwares,   :from => hardwares_url

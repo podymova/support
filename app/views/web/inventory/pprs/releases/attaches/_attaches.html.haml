@@ -1,0 +1,17 @@
+- unless array.attaches.size == 0
+  .list-comment
+    %table{:cellpadding => 0, :cellspacing => 0}
+      - array.attaches.each do |pc|
+        = render 'web/inventory/pprs/releases/attaches/item',
+          :ppr => ppr,
+          :value => pc,
+          :from_url => from_url
+
+-#= link_to 'Прикрепить файл', '#new-attach', :rel => 'new-attach', :class => 'btn btn-small btn-success'
+.new-attach
+  = simple_form_for(:attach, :url => url) do |f|
+    .form-line
+      = f.input :image, :as => :file, :label => '&nbsp;', :required => false
+      -#= f.input :asset_cache, :as => :hidden
+    .form-line
+      = f.submit 'Прикрепить файл', :class => 'btn btn-small btn-success'

@@ -1,0 +1,19 @@
+INSERT INTO schema_migrations (version) VALUES ('20120917070002');
+INSERT INTO schema_migrations (version) VALUES ('20120918055303');
+INSERT INTO schema_migrations (version) VALUES ('20120918070731');
+INSERT INTO schema_migrations (version) VALUES ('20120921045018');
+INSERT INTO schema_migrations (version) VALUES ('20120925064824');
+INSERT INTO schema_migrations (version) VALUES ('20120925104337');
+INSERT INTO schema_migrations (version) VALUES ('20120925104500');
+INSERT INTO schema_migrations (version) VALUES ('20120925105222');
+INSERT INTO schema_migrations (version) VALUES ('20120925113356');
+INSERT INTO schema_migrations (version) VALUES ('20120926110351');
+INSERT INTO schema_migrations (version) VALUES ('20120928064623');
+INSERT INTO schema_migrations (version) VALUES ('20120928074653');
+INSERT INTO schema_migrations (version) VALUES ('20121003075337');
+INSERT INTO schema_migrations (version) VALUES ('20121003101034');
+INSERT INTO schema_migrations (version) VALUES ('20121003105041');
+INSERT INTO schema_migrations (version) VALUES ('20121003105139');
+INSERT INTO schema_migrations (version) VALUES ('20121003111618');
+
+

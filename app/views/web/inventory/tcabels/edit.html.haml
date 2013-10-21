@@ -1,0 +1,22 @@
+= render 'form',
+  :value => @tcabel,
+  :url => tcabel_path(@tcabel),
+  :from_url => edit_tcabel_path(@tcabel)
+
+%br
+%br
+%br
+
+= render 'cabels',
+  :value => @tcabel,
+  :from_url => edit_tcabel_path(@tcabel),
+  :cabel => @tcabel_cabel
+
+-#= 'Был создан:'
+-#= @tcabel.created_at
+-#%br
+-#= 'Последнее изменение:'
+-#= @tcabel.updated_at
+-#%br
+-#= 'Пользователь'
+-#= @tcabel.user

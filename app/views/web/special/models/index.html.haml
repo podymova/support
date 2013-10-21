@@ -1,0 +1,39 @@
+- content_for :title  do
+  = 'Модели'
+
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, t('web.admin.id')
+      %th= sort_link @search, :name, 'Имя'
+      %th= sort_link @search, :full, 'Полное название'
+      %th= sort_link @search, :section, 'Секция'
+      %th= sort_link @search, :state, 'Состояние'
+      %th
+      %th
+  %tbody
+    - if @models.size > 0
+      - @models.each do |i|
+        %tr
+          %td= i.id
+          %td= i.name
+          %td= i.full
+          %td= i.section
+          %td= i.state
+          %td= link_to t('web.admin.edit'), edit_special_model_path(i)
+          %td= link_to t('web.admin.delete'),
+            special_model_path(i),
+            :method => :delete,
+            :confirm => t('web.admin.are_you_sure'),
+            :class => 'link-to-delete'
+    - else
+      %tr
+        %td{:colspan => 6, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+-#= render 'shared/admin/paginator',
+  :paginator => @tcabels,
+  :from => admin_tcabels_url

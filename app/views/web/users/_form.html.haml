@@ -1,0 +1,25 @@
+-#- content_for :back  do
+  = link_to 'Назад', from_url, :type => "reset"
+
+- content_for :title  do
+  = array.fullname
+
+= simple_form_for(array, :url => url) do |f|
+  .form-line
+    = f.input :login, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :email, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :fullname, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :phone, :required => false, :input_html => { :id => 'LoginForm_login', :data => {:mask => '+7(999)99-999-99'}}
+  .form-line
+    = f.input :state, :as => :state_select_via_transition, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.association :role, :include_blank => false, :input_html => { :id => 'LoginForm_login'}
+    %br
+  - if action == 'edit'
+    .form-line
+      = link_to 'Сменить пароль', edit_password_path(array, :from_url => edit_user_path(array))
+  %br
+  = f.submit 'Сохранить', :class => 'btn btn-small btn-danger'

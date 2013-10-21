@@ -1,0 +1,196 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        page:
+          attributes:
+            slug:
+              slug: "должно быть указано"
+        user:
+          attributes:
+            email:
+              email: "должна быть указана"
+        announcement:
+          attributes:
+            link_ru:
+              url: "должна быть указана url"
+            link_en:
+              url: "должна быть указана url"
+        ppr:
+         attributes:
+           date_to_inspoln:
+             date_to_inspoln1: 'не может быть меньше даты проведения проверки'
+           date_to_end:
+             date_to_end1: 'не может быть меньше даты передачи в исполнение'             
+                
+
+    attributes:
+      session:
+        login: "Логин"
+        password: "Пароль"
+      hardware:
+        name: "Наименование"
+      hardware/topology:
+        name: "Наименование"
+      role:
+        name: 'Имя группы'
+        state: 'Состояние'
+        type: 'Тип'
+        order: 'Порядок'
+      role/user:
+        login: "Логин"
+        email: "E-mail"
+        state: "Состояние"
+        phone: "Телефон"
+        fullname: "Ф.И.О."
+        password: "Новый пароль"
+        password_new: "Новый пароль"
+        password_confirmation: "Подтверждение нового пароля"
+        group: "Группа"
+        password_confirmation: "Подтверждение пароля"
+        password_digest: "Пароль"
+        role: "Роль"
+      street:
+        name: "Название"
+        short: 'Сокращенное название'
+      street/house:
+        entrances: 'Число подъездов'
+        floors: 'Число этажей'
+        number: 'Номер'
+        state: 'Состояние'
+      inventory/ppr:
+        entrance: "Подъезд"
+      inventory/ppr/release:
+        entrance: "Подъезд"
+        floor: "Этаж"
+        address: "Адрес"
+        house: "Дом"
+        street_id: "Улица"
+        house_id: "Дом"
+        user_id: "Исполнитель"
+        manager: "Ответственный/Контроллер"
+        resume: "Резюме"
+        tasks_list: "Список работ"
+        date2ispoln: "Дата передачи в исполнение"
+        date2end: "Дата завершения ремонта"
+        created_at: "Дата проведения проверки"
+      inventory/ppr/release/comment:
+        body: ''
+      inventory/tcabel:
+        name: 'Имя'
+        prefix: 'Инвентарный префикс'
+        state: 'Состояние'
+        order: 'Порядок'
+        created_at: 'Дата создания записи'
+      inventory/tcabel/cabel:
+        inumber: 'Инвентарный номер'
+        length: 'Длина'
+        comment: 'Комментарий'
+        state: 'Состояние'
+        order: 'Порядок'
+        tcabel_id: 'Тип'
+        tcabel: 'Тип'
+        created_at: 'Дата создания записи'
+      inventory/tdev:
+        model: 'Тип'
+        state: 'Состояние'
+        order: 'Порядок'
+        created_at: 'Дата создания записи'
+      inventory/tdev/dev:
+        model: 'Модель'
+        producer: 'Производитель'
+        power: 'Потребляемая мощность'
+        inumber: 'Инвентарный номер'
+        snumber: 'Серийный номер'
+        ip: 'IP'
+        mac: 'MAC'
+        state: 'Состояние'
+        order: 'Порядок'
+        created_at: 'Дата создания записи'
+        tdev: 'Тип'
+        tdev_id: 'Тип'
+      inventory/node:
+        order: 'Порядковый номер узла'
+        inumber: 'Порядковый номер узла'
+        mvlan: 'Managment VLAN'
+        cvlan: 'Client VLAN'
+        state: 'Состояние'
+        house_id: 'Адрес'
+        street_id: 'Дом'
+        created_at: 'Дата создания записи'
+        entrance: 'Подъезд'
+        service_state: 'Статус эксплуатации'
+        quantity: 'Количество'
+        item: 'Единица измерения'
+      inventory/dmoving:
+        dev: 'Что перемещаем (dev)'
+        nod_from: 'Откуда (узел)'
+        nod_to: 'Куда (узел)'
+        comment: 'Комментарий'
+        created_at: 'Дата создания записи'
+      inventory/mastercomp:
+        name: 'Название'
+        order: 'Порядок'
+        state: 'Состояние'
+        street_id: 'Улица'
+        house_id: 'Дом'
+        created_at: 'Дата создания записи'
+      inventory/role:
+        name: 'Имя'
+        state: 'Состояние'
+        order: 'Порядок'
+        user_id: 'Пользователь'
+        user: 'Пользователь'
+        created_at: 'Дата создания записи'
+        updated_at: 'Последнее обновление'
+      inventory/hardware:
+        name: 'Имя'
+        state: 'Состояние'
+        order: 'Порядок'
+        created_at: 'Дата создания записи'
+        updated_at: 'Последнее обновление'
+      inventory/hardware/topology:
+        name: 'Имя'
+        state: 'Состояние'
+        order: 'Порядок'
+        created_at: 'Дата создания записи'
+        updated_at: 'Последнее обновление'
+
+      setting:
+        per_page: ''
+    state_machines:
+      state:
+        states:
+          blocked: "заблокировано"
+          active: "активно"
+
+      service_state:
+        states:
+          on_service: 'В эксплуатации'
+          mounting: 'Монтаж оборудования'
+          building: 'Строительство'
+          examined: 'Обследован'
+          ready_to_examination: 'Готов к обследованию'
+          not_examined: 'Не обследован'
+          unmounted: 'Демонтирован'
+
+      type_state:
+        states:
+          root: "Root"
+          admin: "Admin"
+          client: "Client"
+
+  date:
+    formats:
+      short_date_in_numbers: "%d.%m.%Y"
+      news_date: "%e %B %Y"
+      archive_date: "%e %B %Y"
+      best_broadcast_date: "%e %B %Y"
+  time:
+    formats:
+      short_time_in_numbers: "%d.%m.%Y %H:%M"
+      short_date_in_numbers: "%d.%m.%Y"
+      schedule_time: "%e %B <br>%Y<span>%A</span><span>%H:%M</span>"
+      main_schedule_time: "%e %B %Y<span>%A</span><span>%H:%M</span>"
+      broadcast_time: "%e.%m.%Y %H:%M"
+          

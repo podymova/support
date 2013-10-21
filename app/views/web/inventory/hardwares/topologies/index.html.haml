@@ -1,0 +1,24 @@
+- content_for :title  do
+  = @title
+
+-#= link_to t('wev.admin.back'), admin_hardwares_url, :class => 'btn btn-primary'
+= link_to t('web.admin.new'), new_hardware_topology_path(@hardware.id), :class => 'btn btn-primary'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= t('web.admin.id')
+      %th= t('web.admin.hardwares.title1')
+      %th
+  %tbody
+    - @hardware_topologies.each do |topology|
+      %tr
+        %td= topology.id
+        %td= topology.name
+        %td
+          = link_to t('web.admin.edit'), edit_hardware_topology_path(@hardware.id, topology), :class => 'btn btn-mini'
+-#= render 'shared/admin/paginator',
+    :paginator => @hardware_topologies,
+    :from => hardware_topologies_url(@hardware)

@@ -1,0 +1,46 @@
+- dis = (defined? disabled) ? disabled : 0
+
+-#- content_for :title  do
+  = value.inumber
+
+-#= render 'shared/inventory/error_messages', :errors => value.errors
+%br
+
+= simple_form_for(value, :url => url, :from_url => from_url, :html => {:rel => "form2Disable"}) do |f|
+
+  .form-line
+    = f.input :producer, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :model, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :power, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :inumber, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :snumber, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :ip, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :mac, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    =f.association :tdev, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :order, :input_html => { :id => 'LoginForm_login'}
+
+  :javascript
+    disableForm("#{dis}");
+
+  .form-line
+    - if current_menu[@mid][:delete] == true
+      = f.input :state, :as => :state_select_via_transition, :input_html => { :id => 'LoginForm_login'}
+    - else
+      = f.input :state, :input_html => { :id => 'LoginForm_login'}, :disabled => true
+
+
+  - if dis == 0
+    %br
+      = f.submit t('web.admin.save'), :class => 'btn btn-small btn-danger'
+
+
+
+

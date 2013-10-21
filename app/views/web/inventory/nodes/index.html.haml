@@ -1,0 +1,33 @@
+-#- content_for :title  do
+  = t('web.admin.nodes.title')
+
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Inventory::Node.human_attribute_name(:id)
+      %th= sort_link @search, :street_id, ::Inventory::Node.human_attribute_name(:street_id)
+      %th= sort_link @search, :house_id, ::Inventory::Node.human_attribute_name(:house_id)
+      %th= sort_link @search, :entrance, ::Inventory::Node.human_attribute_name(:entrance)
+      %th= sort_link @search, :inumber, ::Inventory::Node.human_attribute_name(:order)
+      %th
+  %tbody
+    - if @nodes.size > 0
+      - @nodes.each do |e|
+        %tr
+          %td= e.id
+          %td= e.street.name
+          %td= e.house.number
+          %td= e.entrance
+          %td= e.inumber
+          %td
+            = link_to 'Открыть',  url_for(:controller => 'nodes', :action => current_menu[@mid][:open], :id => e, :from_url => from_url)
+    - else
+      %tr
+        %td{:colspan => 6, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+= render 'shared/paginator',
+  :paginator => @nodes

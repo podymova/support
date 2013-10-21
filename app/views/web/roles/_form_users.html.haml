@@ -1,0 +1,100 @@
+-#%h4= 'Пользователи'
+- path = (current_type == ::Admin) ? role_path(general_role_id) : edit_role_path(general_role_id)
+.alert.alert-block{:style => 'color:gray;'}
+  = 'При удалении пользователя из роли он перемещается в'
+  = link_to 'General', path
+
+-# Add new user to the current role
+- main_text = render 'web/roles/users/users',
+  :users => ::Role::User.active.other_roles(array.id),
+  :array => array,
+  :from_url => from_url,
+  :url => role_users_path(array, :from_url => from_url)
+
+
+
+-# Filter
+%p.slide
+  = link_to 'Добавить пользователей', "#selectUsers", :data => {:toggle => "modal"}, :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+  = render 'shared/modal',
+    :modal_id => 'selectUsers',
+    :modal_style => "width:800px;left:40%;",
+    :modal_text => main_text,
+    :modal_title => '',
+    :save_button => true,
+    :save_url => role_users_path(array, :from_url => from_url),
+    :save_title => 'Добавить',
+    :save_click => "$('#form_selectUsers').submit();",
+    :link_title => 'Добавить пользователей',
+    :search_input => true,
+    :search_url => search_api_users_path
+
+.filter
+
+  = simple_form_for(:search,
+                      :url => edit_role_path(array),
+                      :method => :get,
+                      :html => {:id => 'pprf'})  do |f|
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        %td
+          .form-line
+            = f.input :created_at_less_than_or_equal_to, :required => false, :label => ::Role::User.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker", :autocomplete => 'off'}
+        %td
+          .form-line
+            = f.input :login_like, :required => false, :label => ::Role::User.human_attribute_name(:login)
+        %td
+          .form-line
+            = f.input :email_like, :required => false, :label => ::Role::User.human_attribute_name(:email)
+      %tr
+        %td
+          .form-line
+            = f.input :phone_like, :required => false, :label => ::Role::User.human_attribute_name(:phone)
+        %td
+          .form-line
+            = f.input :fullname_like, :required => false, :label => ::Role::User.human_attribute_name(:fullname)
+        %td
+          .form-line
+            = f.input :state_equals, :collection => ::Role::User.new.state_paths.to_states, :required => false, :label => ::Role::User.human_attribute_name(:state)
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', edit_role_path(array), :type => "reset"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'
+-# Filter
+
+
+
+%br
+%br
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= t('web.admin.id')
+      %th= t('web.admin.users.login')
+      %th= t('web.admin.users.fullname')
+      %th{:colspan => 2}
+  %tbody
+  - if users.size > 0
+    - users.each do |u|
+      %tr
+      %td= u.id
+      %td= u.login
+      %td= u.fullname
+      %td= link_to 'Открыть', edit_user_path(u)
+      %td= link_to 'Убрать из группы', role_user_path(array, u, :from_url => request.fullpath),
+        :method => :delete,
+        :confirm => t('web.admin.are_you_sure'),
+        :class => 'link-to-delete'
+  - else
+    %tr
+      %td{:colspan => 5, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+= render 'shared/paginator',
+  :paginator => users

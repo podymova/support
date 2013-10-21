@@ -1,0 +1,133 @@
+<!doctype html>
+/[if lt IE 7] <html class="no-js ie6 ie67 ie" lang="ru">
+/[if IE 7] <html class="no-js ie7 ie67 ie" lang="ru">
+/[if IE 8] <html class="no-js ie8 ie" lang="ru">
+/[if IE 9] <html class="no-js ie9 ie" lang="ru">
+/ [if gt IE 9]><!
+%html.no-js{:lang => "ru"}
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    %link{:href => "clientz2/themes/MTS/i/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}/
+    %link{:href => "clientz2/themes/MTS/css/controls.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "clientz2/themes/MTS/css/layout.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "clientz2/themes/MTS/css/lanbilling.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "clientz2/themes/MTS/css/jquery-ui-1.8.16.custom.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "clientz2/themes/MTS/css/jquery.fancybox.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "clientz2/assets/ffd422b6/jquery.min.js", :type => "text/javascript"}
+    %script{:src => "clientz2/assets/ffd422b6/jui/js/jquery-ui.min.js", :type => "text/javascript"}
+    %title Логин
+  %body
+    .cpage
+      .header
+        .header-taglines
+          %p.header-tagline Домашний Интернет и Телевидение
+          %p.header-tagline2 Подключение услуг и управление вашим личным счетом
+      .content-wrapper
+        .sidebar
+          .sidebar-logo
+            %a{:href => "/clientz2/index.php?r=account/index"}
+              %img{:alt => "ЛОГО", :src => "clientz2/themes/MTS/i/logo.gif"}/
+            %br/
+            %a{:href => "http://www.mts.ru/"} На основной сайт
+          #yw1.portlet
+            .portlet-content
+              .sidebar-nav
+                .sidebar-nav-title
+                  %strong Личный кабинет
+                %ul.sidebar-nav-menu
+                  %li.nav-menu-item
+                    %a.nav-menu-link{:href => "/clientz2/index.php?r=account/index"} Мои аккаунты
+                  %li.nav-menu-item
+                    %a.nav-menu-link{:href => "/clientz2/index.php?r=services/index"} Тарифы и услуги
+                  / <li class="nav-menu-item">                <a class="nav-menu-link" href="/clientz2/index.php?r=services">                    Тарифы и услуги                </a>            </li>
+                  %li.nav-menu-item
+                    %a.nav-menu-link{:href => "/clientz2/index.php?r=payment"} Оплата услуг
+                  %li.nav-menu-item
+                    %a.nav-menu-link{:href => "/clientz2/index.php?r=history"} Статистика
+                  / <li class="nav-menu-item">
+                  / <a class="nav-menu-link" href="/clientz2/index.php?r=statistics">
+                  / Statistics2
+                  / </a>
+                  / </li>
+                  %li.nav-menu-item
+                    %a.nav-menu-link{:href => "#"} Домашнее телевидение
+                    %ul.sidebar-nav-submenu
+                      %li.nav-submenu-item
+                        %a.nav-menu-link{:href => "/clientz2/index.php?r=DTV/equipment"} Оборудование
+                      %li.nav-submenu-item
+                        %a.nav-menu-link{:href => "/clientz2/index.php?r=DTV/smartcards"} Телеканалы
+                  %li.nav-menu-item
+                    %a.nav-menu-link{:href => "/clientz2/index.php?r=account/settings"} Настройки
+                  %li.nav-menu-item
+                    %a.nav-menu-link{:href => "/clientz2/index.php?r=site/logout"} Выход
+                %span.cwrgw.c15
+                  %span.cbl
+                  %span.cbr
+        .breadcrumbs
+          %a{:href => "/clientz2/index.php"} Главная
+          %span.divider /
+          %span Общая информация
+        .content
+          .content-aside-wrap
+            .content-aside
+              %p
+                %strong Джугашвили Иосиф Виссарионович
+              %p
+                Вы вошли как:
+                %br/
+                %strong stalin
+              %p
+                %span.aside-message
+                  %a{:href => "/clientz2/index.php?r=documents/index&new=1&agreement=0&type=0&status=0"} 1 неоплаченный счет
+                  %a.aside-message-close{:href => "#", :onclick => "this.parentNode.style.display='none';return false"} &nbsp;
+              %span.cwlg.c15
+                %span.ctl
+                %span.ctr
+                %span.cbl
+                %span.cbr
+              %ul.custom-list
+                %li
+                  Контактный телефон:
+                  %br/
+                  %strong
+                    +7
+                    %span#editable-value-phone 202020
+                  %a#popup-edit-form-link-phone.popup-edit-form-link{:href => "", :title => "Редактировать"}
+                    %img{:alt => "Редактировать", :src => "/clientz2/themes/MTS/i/edit.png"}/
+                  :javascript
+                    new edit_form(        "phone",        {"property":"phone"},        "/clientz2/index.php?r=editform/updateaccount",        "<div id=\"popup-edit-form-phone\" class=\"popup-edit-form\">    <div class=\"edit-form-top\">        <span id=\"edit-form-popup-close-phone\" class=\"edit-form-popup-close\">закрыть</span>    </div>    <div class=\"edit-form\">         <div class=\"plus_seven\">+7</div>         <div class=\"input_wrapper\">             <div class=\"wrapped_input_right\"></div>             <input                     id=\"edit-form-input-phone\"                    type=\"text\"                     size=\"14\"                     class=\"wrapped_input\" />         </div>         <button class=\"edit-form-button\" type=\"submit\" name=\"\" id=\"edit-form-button-phone\">                <span class=\"button_inner_wrp\">                    <span class=\"button_inner\">Сохранить</span>                </span>         </button>         <div class=\"clr\"></div>    </div>    <div class=\"edit-form-bottom\">&nbsp;</div></div>");            .content-aside-plain
+              / <p><a href="https://ip.mts.ru/">Интернет-Помощник</a></p>
+              %p Привязка оборудования
+              %a{:href => "/clientz2/index.php?r=services/charp"}
+                %img{:src => "clientz2/i/charp.jpg"}/
+          #yw0
+          :css
+            table.sr {	border-spacing: 3px!important;	border-collapse: separate!important;}          .contract-list
+            .contract-item
+              %h1 Ульяновский ЦУС Приволжского ф-ла ЗАО &quot;КОМСТАР-Регионы&quot;
+              %hr.soften/
+          %span.clg2w.c15
+            %span.ctl
+            %span.ctr
+            %span.cbl
+            %span.cbr
+          .loading-screen
+            .loader-icon
+              %img{:alt => "", :src => "/clientz2/themes/MTS/i/ajax-loader.gif"}/
+            %span.clg2w.c15
+              %span.ctl
+              %span.ctr
+              %span.cbl
+              %span.cbr
+        %span.cwmg.c15
+          %span.ctl
+          %span.ctr
+          %span.cbl
+          %span.cbr
+      .footer
+        %ul.footer-menu         %br/
+        .footer-copy
+          \&copy;&nbsp;2012&nbsp;ОАО &laquo;Мобильные ТелеСистемы&raquo;.
+          %br/
+          Все права защищены.

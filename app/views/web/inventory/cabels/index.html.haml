@@ -1,0 +1,33 @@
+- content_for :title  do
+  = t('web.admin.cabels.title')
+
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Inventory::Tcabel::Cabel.human_attribute_name(:id)
+      %th= sort_link @search, :inumber, ::Inventory::Tcabel::Cabel.human_attribute_name(:inumber)
+      %th= sort_link @search, :length, ::Inventory::Tcabel::Cabel.human_attribute_name(:length)
+      %th= sort_link @search, :state, ::Inventory::Tcabel::Cabel.human_attribute_name(:state)
+      %th= sort_link @search, :tcabel_name, ::Inventory::Tcabel::Cabel.human_attribute_name(:tcabel_id)
+      %th
+  %tbody
+    - if @cabels.size > 0
+      - @cabels.each do |i|
+        %tr
+          %td= i.id
+          %td= i.inumber
+          %td= i.length
+          %td= i.state
+          %td= i.tcabel.name
+          %td= link_to t('web.admin.edit'),  edit_cabel_path(i, :from_url => from_url)
+    - else
+      %tr
+        %td{:colspan => 6, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+-#= render 'shared/inventory/paginator',
+  :paginator => @tcabels,
+  :from => inventory_tcabels_url

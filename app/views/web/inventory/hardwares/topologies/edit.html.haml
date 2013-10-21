@@ -1,0 +1,11 @@
+- content_for :back  do
+  = link_to 'Назад', params[:from_url], :type => "reset"
+
+- content_for :title  do
+  = @hardware_topology.name
+
+= render 'form',
+  :topology => @hardware_topology,
+  :url => hardware_topology_path(@hardware, :from_url => params[:from_url]),
+  :topology_message => t('web.admin.save'),
+  :from_ur => params[:from_url]

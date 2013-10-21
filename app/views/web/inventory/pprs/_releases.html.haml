@@ -1,0 +1,26 @@
+%h4= 'ППР'
+
+%br
+= link_to 'Новый ППР', new_ppr_release_path(array, :from_url => request.fullpath), :class => 'btn btn-primary'
+
+%br
+%br
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= ::Inventory::Ppr::Release.human_attribute_name(:created_at)
+      %th= ::Inventory::Ppr::Release.human_attribute_name(:user_id)
+      %th{:colspan => 2}
+  %tbody
+    - if array.releases.size > 0
+      - array.releases.each do |i|
+        %tr
+          %td=l i.created_at, :format => '%d.%m.%Y %H:%m'
+          %td= i.user.fullname
+          %td= link_to 'Открыть', edit_ppr_release_path(array, i, :from_url => request.fullpath)
+          %td= link_to t('web.admin.delete'), ppr_release_path(array, i, :from_url => request.fullpath), :method => :delete, :confirm => t('web.admin.are_you_sure'), :class => 'link-to-delete'
+        %br
+    - else
+      %tr
+        %td{:colspan => 7, :style => 'text-align: center;'}= 'Ничего не найдено.'
+

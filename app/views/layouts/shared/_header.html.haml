@@ -1,0 +1,13 @@
+#search-result
+
+// Send message to admin about bugs
+= render 'shared/modal',
+  :modal_id => 'bugMessage',
+  :modal_style => "width:800px;left:40%;",
+  :modal_header => 'Сообщить об ошибке!',
+  :modal_text => 'web/special/bugs/new',
+  :close => false,
+  :save_url => special_bugs_path(:from_url => request.fullpath),
+  :save_title => 'Отправить',
+  :link_class => 'bug',
+  :link_title => ''

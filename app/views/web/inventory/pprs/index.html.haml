@@ -1,0 +1,34 @@
+- content_for :title  do
+  = t('web.admin.pprs.title')
+
+-#= link_to 'Mysql', address_api_support_index_path(:data => 'address'), :remote => true
+
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Inventory::Ppr.human_attribute_name(:id)
+      %th= sort_link @search, :street_name, ::Inventory::Ppr.human_attribute_name(:street_id)
+      %th= sort_link @search, :house_number, ::Inventory::Ppr.human_attribute_name(:house_id)
+      %th= sort_link @search, :entrance, ::Inventory::Ppr.human_attribute_name(:entrance)
+      %th= 'Кол-во проверок'
+      %th
+  %tbody
+    - if @pprs.size != 0
+      - @pprs.each do |p|
+        %tr
+          %td= p.id
+          %td= p.street.name
+          %td= p.house.number
+          %td= p.entrance
+          %td= p.releases.size
+          %td= link_to 'Открыть',  edit_ppr_path(p)
+          %td= link_to t('web.admin.delete'), ppr_path(p), :method => :delete, :confirm => t('web.admin.are_you_sure'), :class => 'link-to-delete'
+    - else
+      %tr
+        %td{:colspan => 7, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+

@@ -1,0 +1,4 @@
+%ul
+  - if @houses && @houses.size > 0
+    - @houses.each do |h|
+      %li{:rel => 'addressLine', :data => {:item => h.id, :type => 'house'}}= h.number

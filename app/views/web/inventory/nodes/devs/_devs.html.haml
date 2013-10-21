@@ -1,0 +1,12 @@
+.form-line
+  - array.devs.each do |i|
+    = render 'web/inventory/nodes/devs/item',
+      :value => i,
+      :from_url => from_url
+  %p= link_to 'Привязать оборудование', "#devs", :rel => 'leanModal', :title => 'Оборудование'
+
+  .modals{:id => "devs", :style => 'display:none;'}
+    .content
+      = render 'web/inventory/nodes/devs/data',
+        :array => array,
+        :from_url => from_url

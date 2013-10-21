@@ -1,0 +1,12 @@
+.form-line
+  .nested-fields
+    = link_to '×', node_dev_path(value.node_id, value, :from_url => from_url), :method => :delete, :class => 'close', :title => 'Удалить'
+    = array.dev.inumber
+
+  %p= link_to 'Что перемещаем (dev)', "#devs", :rel => 'leanModal', :title => 'Оборудование'
+
+  .modals{:id => "devs", :style => 'display:none;'}
+    .content
+      = render 'web/admin/nodes/devs/data',
+        :array => array,
+        :from_url => from_url

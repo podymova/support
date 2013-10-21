@@ -1,0 +1,26 @@
+- content_for :back  do
+  = link_to 'Назад', tdevs_path(:mid => @mid), :type => "reset"
+
+%ul.nav.nav-pills#users2rightsTabs
+  %li.active{:style => 'width:50%;'}= link_to 'Основная информация', "#tdev-main", :data => {:toggle => "tab"}
+  %li{:style => 'width:50%;'}= link_to 'Оборудование', "#tdev-devs", :data => {:toggle => "tab"}
+.tab-content
+  .tab-pane#tdev-main.active
+    = render 'form',
+      :value => @tdev,
+      :url => tdev_path(@tdev, :mid => @mid),
+      :from_url => edit_tdev_path(@tdev, :mid => @mid)
+  .tab-pane#tdev-devs
+    = render 'dev',
+      :value => @tdev,
+      :from_url => edit_tdev_path(@tdev, :mid => @mid)
+
+
+-#= 'Был создан:'
+-#= @tcabel.created_at
+-#%br
+-#= 'Последнее изменение:'
+-#= @tcabel.updated_at
+-#%br
+-#= 'Пользователь'
+-#= @tcabel.user

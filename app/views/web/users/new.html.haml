@@ -1,0 +1,6 @@
+= render 'form',
+  :array => @user,
+  :url => users_path,
+  :from_url => roles_path,
+  :user_message => t('web.admin.save'),
+  :action => 'new'

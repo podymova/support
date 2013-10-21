@@ -1,0 +1,41 @@
+%p.slide
+  - if current_menu[@mid][:new]
+    = link_to t('web.admin.new'), new_node_path, :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+  = render 'shared/admin/address_line',
+    :submit => false
+
+  = simple_form_for(:search,
+                      :url => nodes_path,
+                      :method => :get)  do |f|
+    = f.input :street_id_equals, :as => :hidden, :required => false, :input_html => { :id => 'street'}
+    = f.input :house_id_equals, :as => :hidden, :required => false, :input_html => { :id => 'house'}
+
+    %br
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        %td
+          = f.input :created_at_less_than_or_equal_to, :label => ::Inventory::Node.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker"}
+        %td
+          = f.input :entrance_equals, :label => ::Inventory::Node.human_attribute_name(:entrance)
+        %td
+          = f.input :cabel_inumber_like, :label => ::Inventory::Node.human_attribute_name(:cabel)
+        %td
+          = f.input :quantity_equals, :label => ::Inventory::Node.human_attribute_name(:quantity)
+      %tr
+        %td
+          = f.input :mvlan_like, :label => ::Inventory::Node.human_attribute_name(:mvlan)
+        %td
+          = f.input :cvlan_like, :label => ::Inventory::Node.human_attribute_name(:cvlan)
+        %td
+          = f.input :state_equals, :collection => ::Inventory::Node.new.state_paths.to_states, :label => ::Inventory::Node.human_attribute_name(:state)
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', nodes_path, :type => "reset"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'

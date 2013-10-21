@@ -1,0 +1,44 @@
+
+-#- content = render 'web/inventory/tdevs/devs/form',
+  :value => value.devs.build,
+  :url => tdev_devs_path(value, :from_url => from_url)
+
+
+
+
+
+
+- if current_menu[@mid][:new]
+  - content_for :buttons  do
+    .dropdown{:style => 'float:left;margin-right:10px;'}
+      %ul.dropdown-menu{'aria-labelledby' => "drop"}
+        %li= link_to 'Довавить из списка', '#'
+        %li.divider
+        %li= link_to 'Новое оборудование', "#addNewDevs", :data => {:toggle => "modal"}
+
+      = content_tag :a, :class => 'btn btn-primary', :id => 'drop', :data => {:toggle => 'dropdown'} do
+        = "Добавить оборудование"
+        = content_tag(:b, "", :class => "caret")
+
+
+
+= render 'shared/ajax_filter',
+  :url => search_api_node_devs_path(value.id),
+  :content => 'web/inventory/nodes/devs/filter',
+  :buttons => yield(:buttons)
+
+
+
+
+
+
+-#= render 'shared/modal',
+  :modal_id => 'addNewDevs',
+  :modal_style => "width:400px;left:55%;height:600px;",
+  :modal_text => content,
+  :modal_title => '',
+  :save_button => true,
+  :save_url => tdev_devs_path(value, :from_url => from_url),
+  :save_title => 'Добавить',
+  :save_click => "$('.addNewDev').submit();",
+  :body_style => 'height:500px !important;'

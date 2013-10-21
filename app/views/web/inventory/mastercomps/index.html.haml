@@ -1,0 +1,34 @@
+- content_for :title  do
+  = t('web.admin.mastercomps.title')
+
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Inventory::Mastercomp.human_attribute_name(:id)
+      %th= sort_link @search, :name, ::Inventory::Mastercomp.human_attribute_name(:name)
+      %th= sort_link @search, :state, ::Inventory::Mastercomp.human_attribute_name(:state)
+      %th= sort_link @search, :street_name, ::Inventory::Mastercomp.human_attribute_name(:street_id)
+      %th= sort_link @search, :house_number, ::Inventory::Mastercomp.human_attribute_name(:house_id)
+      %th
+  %tbody
+    - if @mastercomps.size > 0
+      - @mastercomps.each do |e|
+        %tr
+          %td= e.id
+          %td= e.name
+          %td= e.state
+          %td= e.street.name
+          %td= e.house.number
+          %td
+            = link_to t('web.admin.edit'),  edit_mastercomp_path(e)
+    - else
+      %tr
+        %td{:colspan => 6, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+-#= render 'shared/admin/paginator',
+  :paginator => @mastercomps,
+  :from => admin_hardwares_url

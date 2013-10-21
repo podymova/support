@@ -1,0 +1,24 @@
+- content_for :back  do
+  = link_to 'Назад', special_models_path, :type => "reset"
+
+- content_for :title  do
+  = value.name
+
+-#= render 'shared/inventory/error_messages', :errors => value.errors
+%br
+
+= simple_form_for(value, :url => url) do |f|
+  .form-line
+    = f.input :name, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :section, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :full, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :order, :input_html => { :id => 'LoginForm_login', :min => 0}
+  .form-line
+    = f.input :state, :as => :state_select_via_transition, :input_html => { :id => 'LoginForm_login'}
+  %br
+  = f.submit t('web.admin.save'), :class => 'btn btn-small btn-danger'
+
+

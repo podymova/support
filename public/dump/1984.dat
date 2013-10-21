@@ -1,0 +1,4 @@
+INSERT INTO groups (id, name, description, created_at, updated_at) VALUES (2, 'Пользователи', NULL, '2012-09-25 11:11:31.486075', '2012-09-25 12:16:26.158895');
+INSERT INTO groups (id, name, description, created_at, updated_at) VALUES (3, 'Администраторы', NULL, '2012-09-25 12:16:43.812639', '2012-09-26 12:53:13.644868');
+
+

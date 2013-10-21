@@ -1,0 +1,5 @@
+INSERT INTO group_sections (id, name, created_at, updated_at, group_id, section, link) VALUES (1, 'Пользователи', '2012-10-03 09:37:26.138818', '2012-10-03 09:37:26.138818', 3, 'sprav', '/admin/groups/all');
+INSERT INTO group_sections (id, name, created_at, updated_at, group_id, section, link) VALUES (2, 'Оборудование', '2012-10-03 09:37:56.81937', '2012-10-03 09:37:56.81937', 3, 'sprav', '/admin/hardwares');
+INSERT INTO group_sections (id, name, created_at, updated_at, group_id, section, link) VALUES (3, 'Адреса', '2012-10-03 00:00:00', '2012-10-03 00:00:00', 3, 'sprav', '/admin/streets');
+
+

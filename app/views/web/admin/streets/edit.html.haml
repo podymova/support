@@ -1,0 +1,9 @@
+= render 'form',
+  :value => @street,
+  :url => admin_street_path(@street),
+  :message => t('web.admin.save')
+
+= render 'houses',
+  :value => @street,
+  :message => t('web.admin.save'),
+  :from_url => edit_admin_street_path(@street)

@@ -1,0 +1,38 @@
+/**
+ * Overrides default dgrid view
+ */
+.grid-view table {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.grid-view table.items {
+    border: none;
+}
+
+.grid-view table.items th, .grid-view table.items td {
+    border: none;
+    padding: 4px 12px;
+    vertical-align: middle;
+}
+
+.grid-view table.items th {
+    background: none;
+    text-align: left;
+    color: #000000;
+    font-weight: normal;
+}
+
+.grid-view table.items tr.odd {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border-bottom: 1px solid #E9E9E9;
+    border-top: 1px solid #E9E9E9;
+}
+
+.grid-view table.items tr.even {
+    background: none repeat scroll 0 0 transparent;
+}
+
+.grid-view table.items tbody tr:hover {
+    background: none repeat scroll 0 0 #E9E9E9;
+}

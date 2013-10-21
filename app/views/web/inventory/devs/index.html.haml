@@ -1,0 +1,8 @@
+%ul.nav.nav-pills
+  %li.active{:style => 'width:50%;'}= link_to 'Оборудование', devs_path
+  %li{:style => 'width:50%;'}= link_to 'Типы оборудования', tdevs_path(:mid => @mid)
+.tab-content
+  .tab-pane#devs.active
+    = render 'devs',
+      :array => @devs
+  .tab-pane#tdevs

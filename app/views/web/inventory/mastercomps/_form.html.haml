@@ -1,0 +1,23 @@
+- content_for :back  do
+  = link_to 'Назад', mastercomps_path, :type => "reset"
+
+- content_for :title  do
+  = value.name
+
+
+-#= render 'shared/admin/error_messages', :errors => value.errors
+
+= render 'shared/admin/address_line'
+
+= simple_form_for(value, :url => url, :html => {:class => 'send-data'}) do |f|
+  = f.input :street_id, :as => :hidden, :input_html => { :id => 'street'}
+  = f.input :house_id, :as => :hidden, :input_html => { :id => 'house'}
+  
+  .form-line
+    = f.input :name, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :order, :required => false, :input_html => { :id => 'LoginForm_login', :min => 0}
+  .form-line
+    = f.input :state, :required => false, :as => :state_select_via_transition, :input_html => { :id => 'LoginForm_login'}
+  %br
+  = f.submit message, :class => 'btn btn-small btn-danger'

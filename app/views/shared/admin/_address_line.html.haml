@@ -1,0 +1,15 @@
+= simple_form_for(:address,
+                  :url =>  api_streets_path,
+                  :method => 'get',
+                  :html => {:id => "saf",
+                            :onsubmit => "return false;"}) do |f|
+  = f.input :street, :as => :hidden, :input_html => {:id => 'search-street'}
+  = f.input :house, :as => :hidden, :input_html => {:id => 'search-house'}
+  .form-line
+    = f.input :value,
+              :label => t('web.admin.pprs.address'),
+              :required => false,
+              :hint => 'Пример: Фестивальный-10',
+              :input_html => {:id => 'search',
+                              :autocomplete => "off",
+                              :style => "text-align:left;width:500px !important; display: block; width: 220px; height: 21px; padding: 0 12px; border: 1px solid #CCC;"}

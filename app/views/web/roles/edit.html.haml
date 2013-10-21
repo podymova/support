@@ -1,0 +1,14 @@
+= render 'form',
+  :value => @role,
+  :url => role_path(@role),
+  :from_url => edit_role_path(@role),
+  :disabled => false
+
+-#= 'Был создан:'
+-#= @role.created_at
+-#%br
+-#= 'Последнее изменение:'
+-#= @role.updated_at
+-#%br
+-#= 'Пользователь'
+-#= @role.user

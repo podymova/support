@@ -1,0 +1,11 @@
+.nested-fields
+  = link_to '×', ppr_release_comment_path(parent.ppr_id, parent.id, value, :from_url => from_url), :class => 'close', :dismiss => 'alert', :method => :delete, :title => 'Удалить'
+  = value.body
+  %br
+  %br
+  %em.date-style
+    =l value.created_at, :format => "%d %B %Y"
+    = ' by '
+    = current_user.fullname
+
+

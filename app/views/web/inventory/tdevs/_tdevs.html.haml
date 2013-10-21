@@ -1,0 +1,26 @@
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Inventory::Tdev.human_attribute_name(:id)
+      %th= sort_link @search, :model, ::Inventory::Tdev.human_attribute_name(:model)
+      %th= sort_link @search, :state, ::Inventory::Tdev.human_attribute_name(:state)
+      %th
+  %tbody
+    - if array.size > 0
+      - array.each do |tc|
+        %tr
+          %td= tc.id
+          %td= tc.model
+          %td= tc.state
+          %td
+            = link_to 'Открыть',  url_for(:controller => 'tdevs', :action => current_menu[@mid][:open], :id => tc, :mid => @mid)
+    - else
+      %tr
+        %td{:colspan => 6, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+= render 'shared/paginator',
+  :paginator => array

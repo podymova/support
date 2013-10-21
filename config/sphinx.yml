@@ -1,0 +1,10 @@
+production:
+  searchd_file_path: /u/apps/chess/shared/db/sphinx
+  morphology: stem_ru
+staging:
+  searchd_file_path: /u/apps/chess/shared/db/sphinx
+  morphology: stem_ru
+development:
+  morphology: stem_ru
+  mem_limit: 32M
+  sql_host: 127.0.0.1

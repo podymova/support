@@ -1,0 +1,9 @@
+- r = (defined? remote) ? remote : false
+
+= paginate array, :remote => r
+
+:javascript
+  $('[class*=pagination] > ul > li > a').bind('click', function(){
+      var url = parseUrl2Array($(this).attr('href'))
+      AjaxFilter('send', url['page']);
+  });

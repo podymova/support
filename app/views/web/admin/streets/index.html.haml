@@ -1,0 +1,50 @@
+- content_for :title  do
+  = @title
+
+= link_to t('web.admin.new'), new_admin_street_path, :class => 'btn btn-primary'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= ''
+      %th= 'Улица'
+      %th= 'Дома'
+      -#%th
+      %th= 'Состояние'
+      %th{:colspan => 2}
+  %tbody
+    - @streets.each do |s|
+      %tr
+        %td= s.short
+        %td= "#{s.name} (#{s.houses.count})"
+        %td
+          - s.houses.each do |h|
+            = link_to h.number, edit_admin_street_house_path(s, h)
+        -#%td= link_to "Распечатка домов", '#'
+        %td= s.state
+        %td= link_to t('web.admin.edit'),  edit_admin_street_path(s)
+        -#%td
+          = link_to t('web.admin.delete'),  admin_street_path(s), :method => :delete,  :confirm => t('web.admin.are_you_sure'), :class => 'link-to-delete'
+
+
+= render 'shared/admin/paginator',
+    :paginator => @streets,
+    :from => admin_streets_path
+
+
+-#    - @streets.each do |street|
+-#      %tr
+-#        %td= street.short
+-#        %td=link_to street.name, admin_street_houses_path(street)
+-#        %td
+-#          = link_to t('web.admin.edit'),
+-#                    edit_admin_street_path(street),
+-#                    :class => 'btn btn-mini'
+-#        %td
+-#          = link_to t('web.admin.delete'),
+-#                    admin_street_path(street),
+-#                    :method => :delete,
+-#                    :confirm => t('web.admin.are_you_sure'),
+-#                    :class => 'btn btn-small btn-danger'

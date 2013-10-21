@@ -1,0 +1,128 @@
+ru:
+  base_title: "Мобильные ТелеСистемы"
+
+  shared:
+    admin:
+      footer:
+        copyright1: " © 2012 ОАО "
+        title: "Мобильные ТелеСистемы"
+        copyright2: "Все права защищены."
+
+  layouts:
+    application:
+      chess_tv: "Live Site"
+    application_admin:
+      logout: "Выход"
+      toptext: "Текст"
+      schedule: "Расписание"
+
+      left_menu:
+        management: "Управление"
+        spravochnic: "Справочники"
+        documents: "Документы"
+        account: "Аккаунт"
+  web:
+    created: "Новая запись успешно создана."
+    updated: "Запись успешно изменена."
+
+    welcome:
+      button_text: "Все видео с экранов транслируется онлайн на наш сайт, «Забава.ру»"
+      schedule: "Расписание"
+    sessions:
+      logged_in: "Авторизация выполнена успешно"
+      logged_out: "Выход выполнен"
+      login_failed: "Авторизация не выполнена - неправильный логин или пароль"
+      new:
+        authorization: "Авторизация"
+        name: "Логин"
+        password: "Пароль"
+        login: "Войти"
+    admin:
+      main: "Главная страница"
+      edit: "Редактировать"
+      delete: "Удалить"
+      new: "Создать"
+      reset_filter: "Очистить фильтр"
+      save: "Сохранить"
+      are_you_sure: "Вы уверены?"
+      cancel: "Отменить"
+      back: "Назад"
+      no_doc: 'Документ не выбран.'
+
+      id: 'ID'
+      actions: 'Действия'
+      date: 'Дата'
+
+      flash:
+        error_login: 'Неправильный логин или пароль.'
+
+      hardwares:
+        title: 'Оборудование'
+        title1: 'Наименование'
+
+      topologies:
+        title: "Топология"
+
+      streets:
+        title: 'Улицы'
+
+      houses:
+        title: 'Дома'
+
+      users:
+        title: 'Пользователи'
+        login: 'Логин'
+        email: 'E-mail'
+        fullname: 'И.Ф.О.'
+        state: 'Статус'
+        active: 'активен'
+        blocked: 'заблокирован'
+        profile: 'Профиль был изменен.'
+
+
+      roles:
+        title: 'Роли'
+
+      pprs:
+        title: 'ППР'
+        ispolnitel: 'Исполнитель:'
+        resume: 'Резюме'
+        address_hint: 'Пример: Фестивальный-10'
+        address: 'Адрес:'
+        empty_comment: 'Комментарий'
+      cabels:
+        title: 'Кабели'
+      devs:
+        title: 'Оборудование'
+      tcabels:
+        title: 'Типы кабелей'
+      tdevs:
+        title: 'Типы оборудования'
+      nodes:
+        title: 'Узлы'
+      mastercomps:
+        title: 'Управляющие Компании'
+      dmoving:
+        title: 'История перемещений оборудования'
+
+
+
+    inventory:
+      cabels:
+        title: 'Кабели'
+      devs:
+        title: 'Оборудование'
+      tcabels:
+        title: 'Типы кабелей'
+      tdevs:
+        title: 'Типы оборудования'
+      nodes:
+        title: 'Узлы'
+      mastercomps:
+        title: 'Управляющие Компании'
+      dmoving:
+        title: 'История перемещений оборудования'
+
+
+      filter:
+         send: "Фильтр"

@@ -1,0 +1,20 @@
+#modalUsersList
+  -#= simple_form_for(:users, :url => url, :html => {:id => 'form_selectUsers'}) do |f|
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th= check_box_tag 'check_all'
+          %th= 'Логин'
+          %th= 'Имя'
+      %tbody
+        - users.each do |i|
+          %tr
+            %td{:width => 20}= check_box_tag "item_#{i.id}", i.id
+            %td= i.login
+            %td= i.fullname
+
+
+
+-#  %br
+-#  %br
+-#  = f.submit 'Добавить', :class => 'btn btn-small btn-danger', :style => 'margin-left:45%;'

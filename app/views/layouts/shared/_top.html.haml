@@ -1,0 +1,5 @@
+.header-line
+  = render_breadcrumbs
+  %span{:style => "float:right;"}
+    %strong= 'Сегодня:'
+    =l Time.now, :format => '%d %B %Y, %A'

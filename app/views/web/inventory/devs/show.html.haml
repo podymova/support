@@ -1,0 +1,8 @@
+- content_for :back  do
+  = link_to 'Назад', devs_path, :type => "reset"
+
+= render 'form',
+  :value => @dev,
+  :url => dev_path(@dev),
+  :from_url => dev_path(@dev),
+  :disabled => 1

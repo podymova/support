@@ -1,0 +1,30 @@
+= render 'shared/admin/address_line'
+
+%br
+-#- if value.id
+  = render 'web/inventory/nodes/devs/devs',
+    :array => value,
+    :from_url => from_url
+  
+= simple_form_for(value, :url => url, :from_url => from_url) do |f|
+
+  = f.input :house_id, :as => :hidden, :input_html => { :id => 'house'}
+  = f.input :street_id, :as => :hidden, :input_html => { :id => 'street'}
+  = f.input :order, :as => :hidden, :input_html => {:min => 1}
+  = f.input :entrance, :input_html => {:min => 1}
+  = f.input :inumber
+  = f.input :quantity, :input_html => {:min => 1}
+  = f.input :item
+  = f.input :mvlan
+  = f.input :cvlan
+  = f.input :service_state, :as => :state_select_via_transition
+
+  - if current_menu[@mid][:delete] == true
+    = f.input :state, :as => :state_select_via_transition
+  - else
+    = f.input :state, :disabled => true
+
+
+  %br
+    .form-line
+      = f.submit t('web.admin.save'), :class => 'btn btn-small btn-danger'

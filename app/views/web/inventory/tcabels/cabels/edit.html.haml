@@ -1,0 +1,10 @@
+- content_for :back  do
+  = link_to 'Назад', params[:from_url], :type => "reset"
+
+- content_for :title  do
+  = @tcabel_cabel.inumber
+
+= render 'form',
+  :value => @tcabel_cabel,
+  :url => tcabel_cabel_path(@tcabel, :from_url => params[:from_url]),
+  :from_ur => params[:from_url]

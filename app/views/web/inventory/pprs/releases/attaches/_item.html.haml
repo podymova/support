@@ -1,0 +1,10 @@
+%tr
+  %td{:width => 55}
+    = link_to image_tag(value.image.url(:preview)), value.image.url, :title => 'Увеличить', :target => '_blank'
+
+
+  %td{:width => 270, :style => 'overflow-x: hidden; text-overflow: ellipsis;', :title => "#{value.image.file.filename}"}= value.image.file.filename
+  -#%td{:width => 50}= link_to image_tag('/img/download-bul.png'), ppr_attach_path(value.ppr_id, value, :from_url => from_url), :title => 'Скачать'
+  %td{:width => 15}= link_to '×', ppr_release_attach_path(ppr,value.release_id, value, :from_url => from_url), :class => 'close', :dismiss => 'alert', :method => :delete, :title => 'Удалить'
+
+

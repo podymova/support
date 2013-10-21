@@ -1,0 +1,27 @@
+%p.slide
+  = buttons
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+
+  = simple_form_for(:search,
+                      :url => url,
+                      :method => :get,
+                      :remote => true,
+                      :html => {:rel => "AjaxSearchForm",
+                                :onsubmit => "submitAjaxFilter('send', 1)"})  do |f|
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+
+      = render content, :f => f
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', url, :method => :get, :remote => true, :type => "reset", :onclick => "AjaxFilter('reset' ,1);"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'
+
+
+#AjaxFilterResult{:data => {:source => url}}

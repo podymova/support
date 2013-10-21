@@ -1,0 +1,10 @@
+%ul.nav.nav-pills
+  %li.active{:style => 'width:50%;'}= link_to 'Роли', roles_path #, :data => {:toggle => :tab }
+  %li{:style => 'width:50%;'}= link_to 'Пользователи', users_path #, :data => {:toggle => :tab }
+.tab-content
+  .tab-pane#roles.active
+    #roles-content
+      = render 'roles',
+        :array => @roles
+  .tab-pane#users
+    -#= render 'users'

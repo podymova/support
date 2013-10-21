@@ -1,0 +1,29 @@
+%p.slide
+  = link_to t('web.admin.new'), new_dmoving_path, :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+
+  = simple_form_for(:search,
+                      :url => dmovings_path,
+                      :method => :get,
+                      :html => {:id => 'pprf'})  do |f|
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        %td
+          .form-line
+            = f.input :created_at_less_than_or_equal_to, :required => false, :label => ::Inventory::Dmoving.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker", :autocomplete => 'off'}
+        %td
+          .form-line
+            = f.input :dev_inumber_like, :required => false, :label => ::Inventory::Dmoving.human_attribute_name(:dev)
+        -#%td
+          .form-line
+            = f.input :nod_to_like, :required => false, :label => 'Инвентарный номер'
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', dmovings_path, :type => "reset"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'

@@ -1,0 +1,36 @@
+#yw1.portlet
+  .portlet-content
+    .sidebar-nav
+      .sidebar-nav-title
+      %div.left-menu-box
+        %br
+        %ul.sidebar-nav-menu
+          -# Items for root account
+          - if current_type == ::Root
+            = render 'layouts/shared/leftbox_root.html.haml'
+
+          -# Items for root and admin accounts
+          - unless current_type == ::Client
+            %li.nav-menu-item
+              = link_to 'Роли и Пользователи', roles_path, :class => 'nav-menu-link'
+            %li.nav-menu-item
+              = link_to 'Service', special_services_path, :class => 'nav-menu-link'
+            %li.nav-menu-item
+              &nbsp;
+
+          -#%li.nav-menu-item
+            = link_to 'Адреса', admin_streets_path, :class => 'nav-menu-link'
+
+
+          -#- current_menu.each do |m|
+            %li.nav-menu-item
+              = link_to m[1][:title], {:controller => m[1][:controller], :action => :index}, :class => 'nav-menu-link'
+            %li.divider
+
+
+          %li.nav-menu-item
+            &nbsp;
+          %li.nav-menu-item
+            = link_to "Профиль", edit_user_path(current_user, :from_url => root_path, :message => t('web.admin.users.profile')), :class => 'nav-menu-link'
+          %li.nav-menu-item
+            = link_to 'Выход', session_path, :method => :delete, :class => 'nav-menu-link'

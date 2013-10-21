@@ -1,0 +1,56 @@
+- model = ::Inventory::Tdev::Dev
+
+%p.slide
+  - if current_menu[@mid][:new]
+    = link_to t('web.admin.new'), new_dev_path, :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+
+  = simple_form_for(:search,
+                      :url => devs_path,
+                      :method => :get)  do |f|
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        %td
+          .form-line
+            = f.input :created_at_less_than_or_equal_to, :required => false, :label => model.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker", :autocomplete => 'off'}
+        %td
+          .form-line
+            = f.input :producer_like, :required => false, :label => model.human_attribute_name(:producer)
+        %td
+          .form-line
+            = f.input :model_like, :required => false, :label => model.human_attribute_name(:model)
+      %tr
+        %td
+          .form-line
+            = f.input :power_like, :required => false, :label => model.human_attribute_name(:power)
+        %td
+          .form-line
+            = f.input :inumber_like, :required => false, :label => model.human_attribute_name(:inumber)
+        %td
+          .form-line
+            = f.input :snumber_like, :required => false, :label => model.human_attribute_name(:snumber)
+      %tr
+        %td
+          .form-line
+            = f.input :ip_like, :required => false, :label => model.human_attribute_name(:ip)
+        %td
+          .form-line
+            = f.input :mac_like, :required => false, :label => model.human_attribute_name(:mac)
+        %td
+          .form-line
+            = f.input :state_equals, :collection => model.new.state_paths.to_states, :required => false, :label => model.human_attribute_name(:state)
+      %tr
+        %td
+          .form-line
+            = f.input :tdev_id_equals, :collection => model.parent.active, :required => false, :label => model.human_attribute_name(:tdev), :include_blank => true
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', devs_path, :type => "reset"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'

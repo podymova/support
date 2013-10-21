@@ -1,0 +1,11 @@
+- content_for :back  do
+  - if params[:new]
+    = link_to 'Отменить изменения', ppr_release_path(@ppr, @release, :from_url => edit_ppr_path(@ppr)), :method => :delete, :class => 'btn btn-primary'
+  - else
+    = render 'shared/back', :url => params[:from_url]
+
+= render 'form',
+  :parent => @ppr,
+  :value => @release,
+  :url => ppr_release_path(@ppr, :from_url => params[:from_url]),
+  :from_ur => params[:from_url]

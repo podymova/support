@@ -1,0 +1,37 @@
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Inventory::Tdev::Dev.human_attribute_name(:id)
+      %th= sort_link @search, :producer, ::Inventory::Tdev::Dev.human_attribute_name(:producer)
+      %th= sort_link @search, :model, ::Inventory::Tdev::Dev.human_attribute_name(:model)
+      %th= sort_link @search, :power, ::Inventory::Tdev::Dev.human_attribute_name(:power)
+      -#%th= sort_link @search, :inumber, ::Inventory::Tdev::Dev.human_attribute_name(:inumber)
+      -#%th= sort_link @search, :snumber, ::Inventory::Tdev::Dev.human_attribute_name(:snumber)
+      %th= sort_link @search, :state, ::Inventory::Tdev::Dev.human_attribute_name(:state)
+      %th= sort_link @search, :tdev_model, ::Inventory::Tdev::Dev.human_attribute_name(:tdev_id)
+      %th
+  %tbody
+    - if array.size > 0
+      - array.each do |i|
+        %tr
+          %td= i.id
+          %td= i.producer
+          %td= i.model
+          %td= i.power
+          -#%td= i.inumber
+          -#%td= i.snumber
+          %td= i.state
+          %td= i.tdev.model
+          %td
+            = link_to 'Открыть',  url_for(:controller => 'devs', :action => current_menu[@mid][:open], :id => i, :from_url => from_url)
+            -#= link_to t('web.admin.edit'),  edit_dev_path(i, :from_url => from_url)
+    - else
+      %tr
+        %td{:colspan => 7, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+= render 'shared/paginator',
+  :paginator => array

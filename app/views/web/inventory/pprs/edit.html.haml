@@ -1,0 +1,15 @@
+= render 'shared/back', :url => pprs_path
+
+-#= render 'shared/admin/error_messages', :errors => @ppr.errors
+
+= render 'shared/admin/address_line'
+
+%br
+= render 'form',
+  :ppr => @ppr,
+  :url => ppr_path(@ppr),
+  :from_url => edit_ppr_path(@ppr)
+
+
+:javascript
+  $('#saf').addressLine();

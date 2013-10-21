@@ -1,0 +1,9 @@
+- content_for :back  do
+  = link_to 'Назад', nodes_path, :type => "reset"
+
+
+
+= render 'form',
+  :value => @node,
+  :url => nodes_path(@node),
+  :from_url => nodes_path

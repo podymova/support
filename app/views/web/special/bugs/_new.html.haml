@@ -1,0 +1,7 @@
+= simple_form_for :bug_message, :url => special_bugs_path(:from_url => request.fullpath) do |f|
+  = f.input :subject, :required => false
+  = f.input :body, :as => :ckeditor, :label => '&nbsp;', :required => false,
+    :input_html => {:ckeditor => { :height => 200, :toolbar => "mini" }}
+  = f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id}
+  -#.form-line
+    = f.input_field :file, :as => :file, :required => false

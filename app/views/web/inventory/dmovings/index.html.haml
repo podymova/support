@@ -1,0 +1,33 @@
+- content_for :title  do
+  = t('web.admin.dmoving.title')
+
+= render 'filter'
+%br
+%br
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= sort_link @search, :id, ::Inventory::Dmoving.human_attribute_name(:id)
+      %th= sort_link @search, :created_at, ::Inventory::Dmoving.human_attribute_name(:created_at)
+      %th= sort_link @search, :dev_inumber, ::Inventory::Dmoving.human_attribute_name(:dev)
+      %th= sort_link @search, :node_inumber, ::Inventory::Dmoving.human_attribute_name(:nod_from)
+      %th= sort_link @search, :node_inumber, ::Inventory::Dmoving.human_attribute_name(:nod_to)
+  %tbody
+    - if @dmovings.size > 0
+      - @dmovings.each do |e|
+        %tr
+          %td= e.id
+          %td=l e.created_at, :format => "%d.%m.%Y"
+          %td= e.dev.inumber
+          %td= ::Node.find(e.nod_from).inumber
+          %td= ::Node.find(e.nod_to).inumber
+          %td
+            = link_to t('web.admin.edit'),  edit_dmoving_path(e)
+    - else
+      %tr
+        %td{:colspan => 6, :style => 'text-align: center;'}= 'Ничего не найдено.'
+
+-#= render 'shared/admin/paginator',
+  :paginator => @dmovings,
+  :from => admin_dmovings_url

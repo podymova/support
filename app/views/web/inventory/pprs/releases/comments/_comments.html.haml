@@ -1,0 +1,19 @@
+-#= render 'shared/admin/error_messages', :errors => @ppr_comment.errors
+
+- unless array.comments.size == 0
+  .list-comment
+    - array.comments.each do |pc|
+      = render 'web/inventory/pprs/releases/comments/item',
+        :parent => array,
+        :value => pc,
+        :from_url => from_url
+
+-#= render 'shared/admin/error_messages', :errors => @ppr_comment.errors
+-#= link_to 'Добавить комментарий', '#new-comment', :rel => 'new-comment', :class => 'btn btn-small btn-success'
+.new-comment
+  = simple_form_for(array.comments.build, :url => url, :html => {:id => 'nc'}) do |f|
+    .form-line
+      = f.input :body, :as => :text, :label => '&nbsp;', :required => false, :input_html => { :id => 'LoginForm_login', :style => 'width: 99%; padding:0; height: 80px;'}
+    .form-line
+      = f.submit 'Добавить комментарий', :class => 'btn btn-small btn-success'
+

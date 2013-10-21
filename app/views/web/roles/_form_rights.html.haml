@@ -1,0 +1,28 @@
+%h4= 'Права'
+#accordion2.accordion
+  - ::Special::Model.sections.each_with_index do |s,j|
+    .accordion-group
+      .accordion-heading
+        .accordion-toggle= link_to s.section, "#collapse#{j}", :data => {:toggle => "collapse", :parent => "#accordion2"}, :style => 'font-size:13px;'
+      .accordion-body.collapse.in{:id => "collapse#{j}"}
+        .accordion-inner
+          %table.table.table-bordered{:id => "role-rights"}
+            %thead
+              %th
+              %th= 'Объект'
+              %th= 'Просмотр'
+              %th= 'Редактирование'
+              %th= 'Удаление/Блокировка'
+            %tbody
+            - array.rights.active.filtered_by_section(s.section, ::Special::Model).each_with_index do |m, i|
+              %tr
+                = value.fields_for :rights, m do |r|
+                  %td{:width => 20}= check_box_tag "model_#{m.id}", m.id
+                  %td= m.model.full
+                  %td= r.input :ashow, :label => '&nbsp;'
+                  %td= r.input :aedit, :label => '&nbsp;'
+                  %td= r.input :adelete, :label => '&nbsp;'
+
+
+:javascript
+  $(".collapse").collapse()

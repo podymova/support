@@ -1,0 +1,25 @@
+%h4= 'Топология'
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th= t('web.admin.id')
+      %th= t('web.admin.hardwares.title1')
+      %th= 'Порядок'
+      %th= 'Состояние'
+      %th
+  %tbody
+    - value.topologies.each do |t|
+      %tr
+        %td= t.id
+        %td= t.name
+        %td= t.order
+        %td= t.state
+        %td= link_to t('web.admin.edit'),  edit_hardware_topology_path(value, t, :from_url => from_url)
+
+%br
+= simple_form_for(value.topologies.build, :url => hardware_topologies_path(value, :from_url => from_url), :html => {:class => "form-horizontal" }) do |f|
+  .form-line
+    = f.input :name, :required => false, :input_html => { :id => 'LoginForm_login'}
+    = f.input :order, :as => :hidden, :input_html => {:value => value.topologies.maximum('order').to_i+1}
+  %br
+  = f.submit 'Сохранить', :class => 'btn btn-small btn-danger'

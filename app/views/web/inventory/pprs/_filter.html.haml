@@ -1,0 +1,43 @@
+%p.slide
+  = link_to t('web.admin.new'), new_ppr_path, :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+  = render 'shared/admin/address_line',
+    :submit => false
+
+  = simple_form_for(:search,
+                      :url => pprs_path,
+                      :method => :get,
+                      :html => {:id => 'pprf'})  do |f|
+    = f.input :street_id_equals, :as => :hidden, :required => false, :input_html => { :id => 'street'}
+    = f.input :house_id_equals, :as => :hidden, :required => false, :input_html => { :id => 'house'}
+
+    %br
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+
+        %td
+          .dates-range
+            = f.input :created_at_lteq, :required => false, :label => ::Inventory::Ppr::Release.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker"}
+            %div
+              &nbsp;&nbsp;-&nbsp;&nbsp;
+            = f.input :created_at_lte, :required => false, :label => "&nbsp;", :input_html => {:class => "ui_datepicker"}
+
+
+        %td.line
+          = f.input :date_to_inspoln_less_than_or_equal_to, :required => false, :label => ::Inventory::Ppr::Release.human_attribute_name(:date2ispoln), :input_html => {:class => "ui_datepicker"}
+        %td.line
+          = f.input :date_to_end_less_than_or_equal_to, :required => false, :label => ::Inventory::Ppr::Release.human_attribute_name(:date2end), :input_html => {:class => "ui_datepicker"}
+        -#%td
+          .form-line
+            = f.input :manager_equals, :collection => ::Role::User.active, :required => false, :label => ::Inventory::Ppr::Release.human_attribute_name(:manager), :include_blank => true
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', pprs_path, :type => "reset"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'

@@ -1,0 +1,34 @@
+%p.slide
+  = link_to t('web.admin.new'), new_mastercomp_path, :class => 'btn btn-primary'
+  = link_to 'Фильтр', '#filter', :rel => 'filter', :class => 'btn btn-success btn-slide'
+
+.filter
+  = render 'shared/admin/address_line',
+    :submit => false
+
+  = simple_form_for(:search,
+                      :url => mastercomps_path,
+                      :method => :get,
+                      :html => {:id => 'pprf'})  do |f|
+    = f.input :street_id_equals, :as => :hidden, :required => false, :input_html => { :id => 'street'}
+    = f.input :house_id_equals, :as => :hidden, :required => false, :input_html => { :id => 'house'}
+
+    %table{:cellspacing => 0, :cellpadding => 0, :class => 'filter-table'}
+      %tr
+        %td
+          .form-line
+            = f.input :created_at_less_than_or_equal_to, :required => false, :label => ::Inventory::Mastercomp.human_attribute_name(:created_at), :input_html => {:class => "ui_datepicker"}
+        %td
+          .form-line
+            = f.input :name_like, :required => false, :label => ::Inventory::Mastercomp.human_attribute_name(:name)
+        %td
+          .form-line
+            = f.input :state_equals, :collection => ::Inventory::Mastercomp.new.state_paths.to_states, :required => false, :label => ::Inventory::Mastercomp.human_attribute_name(:state)
+
+      %tr
+        %td{:colspan => 3, :align => :left}
+          = link_to 'Очистить фильтр', mastercomps_path, :type => "reset"
+        %td
+          = f.submit '', :class => 'search-button link'
+
+= link_to '', '#', :class => 'arrow'

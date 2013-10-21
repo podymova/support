@@ -1,0 +1,18 @@
+-#= render 'form',
+  :value => @role,
+  :url => roles_path(@role)
+
+= simple_form_for(@role, :url => roles_path(@role), :html => {:id => "editRole"}) do |f|
+  .form-line
+    = f.input :name, :required => false, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    = f.input :order, :input_html => { :id => 'LoginForm_login', :min => 0 }
+  .form-line
+    = f.input :state, :as => :state_select_via_transition, :input_html => { :id => 'LoginForm_login'}
+  .form-line
+    - if current_type == ::Root
+      = f.input :type, :collection => types, :include_blank => false, :required => false, :input_html => { :id => 'LoginForm_login'}
+    - else
+      = f.input :type, :as => :hidden
+  %br
+  = f.submit t('web.admin.save'), :class => 'btn btn-small btn-danger'

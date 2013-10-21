@@ -1,0 +1,17 @@
+= render 'shared/back', :url => pprs_path
+
+-#= render 'shared/admin/error_messages', :errors => @ppr.errors
+
+= render 'shared/admin/address_line'
+
+%br
+= simple_form_for(@ppr, :url => pprs_path, :html => {:class => 'send-data'}  ) do |f|
+  = f.input :user_id, :as => :hidden
+  = f.input :street_id, :as => :hidden, :input_html => { :id => 'street'}
+  = f.input :house_id, :as => :hidden, :input_html => { :id => 'house'}
+  .form-line
+    = f.submit  'Создать', :class => 'btn btn-large btn-danger', :style => 'margin-left:30%;'
+
+
+:javascript
+  $('#saf').addressLine({load:false});
